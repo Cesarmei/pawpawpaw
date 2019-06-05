@@ -1,0 +1,30 @@
+RES --> Representational State Transfer
+
+
+CRUD Operations:
+	- create
+	- read
+	- update
+	- delete
+	
+	
+standard http methods(com exemplos):
+
+	- get (buscar dados) --> GET /api/customers ou GET /api/customers/1
+	- post (criar dados) --> PUT /api/customers/1
+	- put (atualizar dados) --> DELETE /api/customers/1
+	- delete (apagar dados --> POST /api/customers
+	
+
+
+Para nao estar sempre a reiniciar o programa caso seja alterado usamos o package
+	-Nodemonitor
+	- npm i -g nodemon
+	
+	
+
+localhost:5000/api/posts/2018/1?sortBy=name	
+	?sortBy=name  --> core string parameters
+	
+	
+	

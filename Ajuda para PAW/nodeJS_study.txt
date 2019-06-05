@@ -1,0 +1,16 @@
+nodeJS
+******
+
+node module system:
+	- os
+	- file system
+	- events
+	- http
+	
+todos os ficheiros node.JS chamam-se Módulos:
+		- Módulos contém as funções e as variáveis
+		- funções e variáveis são privados ou seja apenas funcionam no seu modulo
+		- para serem utilizados noutros Módulos é necessário permitir
+
+
+MIN 33:01
