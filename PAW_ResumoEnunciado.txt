@@ -1,0 +1,162 @@
+PAW:
+****
+
+Tema: Plataforma social de venda de produtos em 2º mão
+Empresa:  IPSS (Instituição Pública de Solidariedade Social)
+
+******************************************************************
+Dados:
+	- Artigos devem ter:
+		• Um título (obrigatório);
+		• Uma descrição (obrigatório);
+		• Uma base de licitação (obrigatório);
+		• Data de fim do leilão (obrigatório);
+		• Nome do vendedor (obrigatório);
+		• Uma imagem (opcional).
+
+	- As licitações devem ser do estilo:
+		• Nome do utilizador (obrigatório);
+		• Licitação (obrigatório).
+
+	- Página dashboard para o administrador da IPSS onde, para além de todas as outras funcionalidades, possa verificar um conjunto de dados como:
+		• Número de leilões terminados;
+		• Número de leilões ativos;
+		• Montante adquirido pela instituição através da sua percentagem dos leilões;
+		• Montante total gasto na plataforma eletrónica.
+		• Outras estatísticas relevantes (ex: utilizador com mais produtos).
+
+	- Aos utilizadores deve ser mostrado também um pequeno dashboard com informações relevantes como por exemplo:
+		• Número de produtos submetidos;
+		• Número de lances em leilões;
+		• Número de leilões ganhos.
+
+******************************************************************
+
+Notas importantes:
+
+	--> Na página de internet os todos os utilizadores podem ver a lista de artigos para venda, mas podem apenas licitar no artigo com login válido na página.
+
+	--> Um artigo pode receber licitações até ao fim do leilão.
+
+	--> Na página de detalhes do artigo deve aparecer uma lista de licitações ordenada pelo valor da licitação.
+
+	--> Caso a data para o fim do leilão tenha já expirado deve aparecer menção do vencedor do leilão e impedir o produto de receber mais licitações.
+
+	--> Os utilizadores com login devem poder submeter artigos para leilão e ver a lista de artigos que já submeteram para leilão.
+
+	--> Um utilizador pode também cancelar um leilão que ainda não tenha terminado. 
+
+	--> Para efeitos de negócio considere que os artigos são entregues na instituição antes do final do leilão. 
+
+	--> No fim do leilão, o utilizador vencedor deverá deslocar-se à instituição para efetuar o respetivo pagamento da licitação e levantamento do produto.
+
+	--> Os trabalhos entregues deverão evitar (se possível) utilizar caminhos absolutos ou endereços específicos, de modo a que possam ser facilmente utilizados em qualquer máquina.
+
+
+******************************************************************
+
+Requisitos Gerais:
+
+	1. Gestão de artigos em leilão
+		a. Criar/Listar/Desativar artigos em leilão;
+		b. Listar todas os leilões ativos;
+		c. Listar todos os lances no artigo em leilão;
+		d. Criar um lance num artigo em leilão;
+
+	2. Gestão de clientes
+		a. Criar/Remover/Editar Utilizadores na plataforma
+		b. Apresentar dashboard para os diferentes utilizadores;
+		c. Listar artigos em que o utilizador licitou e artigos submetidos a leilão;
+
+	3. Funcionalidades Extra para bonificação do trabalho
+		a. Uso de gráficos nos dashboards do utilizador e do administrador (considerar a título de exemplo a biblioteca hicharts.);
+		--> https://www.npmjs.com/package/angular-highcharts
+
+		b. Adicionar a funcionalidade de lances premium em leilões, onde para criar um lance num leilão o utilizador tem de pagar uma taxa de 1€ que reverte para a instituição IPSS independentemente de ganhar ou não o leilão e ligação com serviços paypal para processamento de pagamentos (considerar o uso do sdk paypal, links abaixo).
+
+		SDK PayPal:
+		--> https://developer.paypal.com/docs/api/quickstart/#how-to-use-this-guide
+		--> https://www.nodejsera.com/paypal-payment-integration-using-nodejs-part1.html
+
+
+******************************************************************
+
+Requisitos Específicos:
+
+	1. Sistema de autenticação e autorização de utilizadores e que consiga identificar administradores, utilizadores com login e sem login.
+
+	2. Desenvolvimento de uma API REST com endpoints com pelo menos a capacidade de:
+		2.1. Listar artigos em leilão;
+		2.2. Obter todos os lances de um artigo em leilão;
+		2.3. Efetuar um lance num artigo em leilão.
+
+	3. Utilizar design e princípios de design responsivo, e adaptado para dispositivos com diferentes tamanhos como por exemplo tablets ou desktops.
+
+	4. E autorizado o uso de ferramentas e frameworks (ex: Bootstrap) introduzidos nas aulas para o desenvolvimento do trabalho prático.
+
+
+******************************************************************
+
+Duas alternativas de realizar o trabalho:
+
+	a. Angular para a parte do cliente e Node.js com a framework express na parte do servidor.
+
+	b. Node.js com a ferramenta express com recurso a template engines como pug/jade ou ejs. (terá uma menor valorização na correção do trabalho prático.)
+
+	OBRIGATÓRIO:
+		---> Repositório GitHub, para registar todo o desenvolvimento da aplicação através de diferentes commits.
+
+
+******************************************************************
+
+Relatório:
+
+	● Identificação e caracterização do projeto:
+		--> Justificando a abordagem seguida de acordo com o processo de negócio da empresa. 
+		--> Deve ainda ser apresentado um diagrama de desenvolvimento identificando as principais tarefas, o membro do grupo responsável por essa tarefa e o tempo previsto;
+
+	● Especificação geral do software a desenvolver:
+		--> Mapeando os requisitos do negócio com as componentes de software a desenvolver. 
+		--> Pode utilizar mockups e/ou diagramas de UML para justificar as decisões tomadas ao nível de implementação para as decisões mais relevantes.
+
+	● Análise dos principais pontos do trabalho:
+		--> Discussão técnica sobre as opções de desenvolvimento e a sua avaliação (pode ser realizada uma apreciação crítica relativamente ao plano inicialmente estabelecido).
+	
+
+******************************************************************
+
+Avaliação:
+
+	● Componente de cliente (40%):
+		--> Ter em consideração as boas práticas de desenvolvimento para a estruturação correta de conteúdos, de estilos e lógica.
+
+	● Componente de servidor (45%):
+		--> Ter em atenção a organização do código e a abordagem selecionada.
+
+	● Relatório (15%).
+
+	NOTA:
+		--> A componente gráfica do trabalho não é objeto de avaliação. No entanto, a sua componente funcional é valorizada.
+
+
+******************************************************************
+
+Entrega e datas:
+
+	--> No moodle com o nome:
+	PAW_<nr_do_grupo>_<nr_do_aluno>_<nr_do_aluno2>_<nr_do_aluno3>.zip
+
+	--> Entregar até às 23h55 do dia 22 de Junho.
+
+	-->  A defesa será realizada no horário da componente prática do exame de época normal. 
+
+	--> Será disponibilizada no dia anterior ao exame uma calendarização com a hora aproximada da apresentação do trabalho. 
+
+	--> Os alunos devem preparar a apresentação de forma a demonstrar o trabalho desenvolvido em cerca de 10 minutos.
+
+	--> A apresentação poderá ser realizada no computador pessoal do aluno ou no computador disponível na sala de exame. 
+
+	--> O aluno deverá preparar todo o conteúdo necessário para que possa demonstrar as funcionalidades desenvolvidas.
+
+
+******************************************************************
