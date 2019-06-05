@@ -1,0 +1,41 @@
+MongoDB:
+
+Utilizadores:
+	- id (inteiro)
+	- nome (string)
+	- password (password)
+	- tipo (string)
+
+
+---------------------------
+
+licitações:
+	- id (inteiro)
+	- nome_utilizador (string)
+	- licitação (float)
+
+
+
+---------------------------
+artigos:
+	- titulo (string)
+	- descrição (string)
+	- base_licitação (float)
+	- data_fim (data)
+	- vendedor (string)
+	- imagem (opcional - string)
+
+---------------------------
+
+leilao:
+	- id (inteiro)
+	- titulo (string)
+	- descriçao (string)
+	- base_licitação (float)
+	- data_fim (data)
+	- imagem (string)
+	- estado (string)
+
+------------------------------
+
+
