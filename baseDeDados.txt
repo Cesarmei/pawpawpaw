@@ -13,6 +13,7 @@ licitações:
 	- id (inteiro)
 	- nome_utilizador (string)
 	- licitação (float)
+	- timestamp (timestamp)
 
 
 
