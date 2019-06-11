@@ -1,0 +1,9 @@
+Moongoose (mongodb no nodejs):
+
+https://www.npmjs.com/package/mongoose
+
+
+---------------------------------------------------
+Comandos mongoDB:
+
+https://www.tutorialspoint.com/mongodb/index.htm
