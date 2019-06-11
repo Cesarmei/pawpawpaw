@@ -5,13 +5,15 @@ Utilizadores:
 	- nome (string)
 	- password (password)
 	- tipo (string)
-
+	- genero (string)
+	- numProdSubmetidos (inteiro)
+	- leiloesGanhos(inteiro)
 
 ---------------------------
 
 licitações:
 	- id (inteiro)
-	- nome_utilizador (string)
+	- id_utilizador (inteiro)
 	- licitação (float)
 	- timestamp (timestamp)
 
@@ -23,6 +25,7 @@ artigos:
 	- descrição (string)
 	- base_licitação (float)
 	- data_fim (data)
+	- id_vendedor
 	- vendedor (string)
 	- imagem (opcional - string)
 
