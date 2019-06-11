@@ -1,0 +1,22 @@
+{
+  "name": "projetopaw",
+  "version": "1.0.0",
+  "description": "Trabalho de grupo de PAW",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cesarmei/pawpawpaw.git"
+  },
+  "author": "Pedro, Marcos e Cesar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Cesarmei/pawpawpaw/issues"
+  },
+  "homepage": "https://github.com/Cesarmei/pawpawpaw#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
