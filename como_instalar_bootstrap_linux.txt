@@ -1,0 +1,12 @@
+-cd /var/www/html/
+
+-git clone https://github.com/twbs/bootstrap.git
+
+-npm install -g bower
+
+-bower install boostrap --allow-root
+
+
+and there you go
+
+fuck this shit
