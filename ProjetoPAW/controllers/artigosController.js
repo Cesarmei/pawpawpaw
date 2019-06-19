@@ -1,5 +1,5 @@
 var moongoose = require("moongoose");
-var Artigo = require("../Mongoose/schemas/artigo.js");
+var Artigo = require("../Mongoose/schemas/artigos.js");
 
 
 
@@ -10,7 +10,7 @@ var Artigo = require("../Mongoose/schemas/artigo.js");
 var artigoController = {};
 
 //Criar artigo
-utilizadorController.createArtigo = function (req,res,next){
+artigoController.createArtigo = function (req,res,next){
 	var artigo = new Artigo(req.body);
 
 	artigo.save(function (err){
@@ -62,7 +62,7 @@ artigoController.getArtigo = function(req,res){
 };
 
 
-utilizadorController.getArtigoById = function(req,res){
+artigoController.getArtigoById = function(req,res){
 	res.json(req.artigo);
 	Artigo.findById(req.body.id_art,req.body,{new: true}, function(err,artigo){
 		if(err){

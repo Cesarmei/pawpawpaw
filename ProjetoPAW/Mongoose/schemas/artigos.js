@@ -8,7 +8,7 @@ function contId(){
 }
 
 //schema de uma licitaçao
-let artigo = new Schema({
+let artigos = new Schema({
 	id_art:{type: Number, min: 1, max: 500, required:true},
 	titulo: {type: String, required:true},
     descriçao: {type: String, required:true},
@@ -19,8 +19,8 @@ let artigo = new Schema({
     imagePath: {type: String}
 });
 
-artigo.methods.findById=function(targetId){
-    return this.model('artigo').findOne({id_art: targetId});
+artigos.methods.findById=function(targetId){
+    return this.model('artigos').findOne({id_art: targetId});
 }
 
-module.exports = artigo;
+module.exports = artigos;

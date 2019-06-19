@@ -48,17 +48,11 @@ let mongoBD = new mongoConnect('paw_tp');
 const User = mongoConnect.connect(userSchema, 'utilizadores');
 */
 
-
 //Setup view engine
 app.set('view engine', 'pug');
 app.set('views', './views');
 
-
-
-
-
 var utilizadoresRouter = require('./routes/utilizador');
-
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -69,10 +63,10 @@ app.use(express.static(path.join(_dirname,'public')));
 app.use('/bootstrap',express.static(_dirname+'/node_modules/bootstrap/dist/css/'));
 app.use('/',main);
 
-app.use('/utilizadores',utilizadoresRouter);
+app.use('/utilizadoresRouter',utilizadoresRouter);
 app.use('/artigosRouter',artigosRouter);
-app.use('/artigosRouter',leilaoRouter);
-app.use('/artigosRouter',licitacaoRouter);
+app.use('/leilaoRouter',leilaoRouter);
+app.use('/licitaçaoRouter',licitaçaoRouter);
 
 //catch 404 and forward to error handler
 app.use(function(req,res,next){

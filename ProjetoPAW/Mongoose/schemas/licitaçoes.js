@@ -15,8 +15,8 @@ let licitaçao = new Schema({
     timestamp: { type: Number, default: (new Date()).getTime()}
 });
 
-licitacao.methods.findById=function(targetId){
-    return this.model('licitacao').findOne({id_lct: targetId});
+licitaçao.methods.findById=function(targetId){
+    return this.model('licitaçao').findOne({id_lct: targetId});
 }
 
-module.exports = licitacao;
+module.exports = licitaçao;
