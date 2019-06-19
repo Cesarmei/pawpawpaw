@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var artigosController = require("../controllers/artigoController.js");
+var artigosController = require("../controllers/artigosController.js");
 
 /*GET lista de artigos */
 router.get('/artigos',artigosController.getArtigos);

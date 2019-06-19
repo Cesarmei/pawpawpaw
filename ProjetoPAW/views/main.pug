@@ -1,0 +1,29 @@
+doctype html
+html
+	head
+		title= Loja do Tio Julio
+		meta(charset='utf-8' name='viewport' content='width=device-width, initial-scale=1')
+		link(rel='stylesheet' href='/bootstrap/bootstrap.css')
+		script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js')
+  		script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js')
+  		script(src='https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js')
+
+	main
+    .loginBox
+      form#signUp.form-control.p-2.w-75(action='/signIn' method='POST')
+        fieldset
+          .page-header.font-weight-bold
+            legend
+              | Bem-vindo
+              abbr(title='Mandatory fields')
+          .form-group.text-left.font-weight-bold
+            label(for='username')
+              | ID
+              abbr(title='Value between 1 and 500')
+            input#username.form-control(type='text' minlength='1' maxlength='500' required='' name='id')
+          .form-group.text-left.font-weight-bold
+            label(for='password')
+              | Password
+            input#password.form-control(type='password' required='' name='password' pattern='(?=.*[a-z])(?=.*[A-Z]).{8,}' title='Must contain at least one uppercase and lowercase letter, and at least 8 or more characters')
+          .btn-group.d-flex.justify-content-center
+            button.p-2.btn.btn-success.w-25(type='submit') Login

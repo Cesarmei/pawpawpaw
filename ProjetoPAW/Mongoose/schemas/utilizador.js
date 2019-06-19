@@ -22,4 +22,4 @@ utilizador.methods.findById=function(targetId){
     return this.model('utilizadores').findOne({id_user: targetId});
 }
 
-module.exports = userSchema;
+module.exports = utilizador;

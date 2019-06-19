@@ -23,4 +23,4 @@ artigo.methods.findById=function(targetId){
     return this.model('artigo').findOne({id_art: targetId});
 }
 
-module.exports = artigoSchema;
+module.exports = artigo;

@@ -22,4 +22,4 @@ leilao.methods.findById=function(targetId){
     return this.model('leilao').findOne({id_art: targetId});
 }
 
-module.exports = leilaoSchema;
+module.exports = leilao;

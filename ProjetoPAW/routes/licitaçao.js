@@ -14,3 +14,4 @@ router.put('/utilizador/:id_lct',licitaçaoController.updateLicitaçao);
 router.delete('/utilizador/:id_lct',licitaçaoController.deleteLicitaçao);
 //PARAM
 router.param('id_lct',licitaçaoController.getLicitaçaoById);
+

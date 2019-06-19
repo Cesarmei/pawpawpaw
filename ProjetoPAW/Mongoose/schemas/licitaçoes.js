@@ -19,4 +19,4 @@ licitacao.methods.findById=function(targetId){
     return this.model('licitacao').findOne({id_lct: targetId});
 }
 
-module.exports = licitacaoSchema;
+module.exports = licitacao;
