@@ -14,3 +14,5 @@ router.put('/leilao/:id_leilao',leilaoController.updateLeilao);
 router.delete('/utilizador/:id_leilao',leilaoController.deleteLeilao);
 //PARAM
 router.param('id_leilao',leilaoController.getLeilaoById);
+
+module.exports = router;

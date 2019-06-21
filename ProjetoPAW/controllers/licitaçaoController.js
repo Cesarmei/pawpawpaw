@@ -1,5 +1,5 @@
 var moongoose = require("moongoose");
-var Licitaçao = require("../Mongoose/schemas/licitaçao.js");
+var Licitaçao = require("../Mongoose/schemas/licita\u00E7oes");
 
 
 
@@ -23,7 +23,7 @@ licitaçaoController.createLicitaçao = function (req,res,next){
 };
 
 //atualizar licitacao
-licitaçaoController.updateController = function(req,res,next){
+licitaçaoController.updateLicitaçao = function(req,res,next){
 	Licitaçao.findByIdAndUpdate(req.body.id_lct,req.body,{new: true}, function(err,licitaçao){
 		if(err){
 			next(err);
@@ -62,7 +62,7 @@ licitaçaoController.getLicitaçao = function(req,res){
 };
 
 //buscar leilao por ID
-licitacaoController.getLicitaçaoById = function(req,res){
+licitaçaoController.getLicitaçaoById = function(req,res){
 	res.json(req.licitaçao);
 	Leilao.findById(req.body.id_lct,req.body,{new: true}, function(err,licitaçao){
 		if(err){
@@ -75,4 +75,4 @@ licitacaoController.getLicitaçaoById = function(req,res){
 
 
 //export do modulo
-module.export = licitaçaoController;
+module.exports = licitaçaoController;

@@ -1,5 +1,5 @@
 var moongoose = require("moongoose");
-var Leilao = require("../Mongoose/schemas/leilao.js");
+var Leilao = require("../Mongoose/schemas/leilao");
 
 
 
@@ -10,7 +10,7 @@ var Leilao = require("../Mongoose/schemas/leilao.js");
 var leilaoController = {};
 
 //Criar leilao
-utilizadorController.createLeilao = function (req,res,next){
+leilaoController.createLeilao = function (req,res,next){
 	var leilao = new Leilao(req.body);
 
 	leilao.save(function (err){
@@ -23,7 +23,7 @@ utilizadorController.createLeilao = function (req,res,next){
 };
 
 //atualizar leilao
-leilaoController.updateController = function(req,res,next){
+leilaoController.updateLeilao = function(req,res,next){
 	Leilao.findByIdAndUpdate(req.body.id_leilao,req.body,{new: true}, function(err,leilao){
 		if(err){
 			next(err);
@@ -75,4 +75,4 @@ leilaoController.getLeilaoById = function(req,res){
 
 
 //export do modulo
-module.export = leilaoController;
+module.exports = leilaoController;

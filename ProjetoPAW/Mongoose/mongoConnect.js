@@ -1,4 +1,7 @@
 
+/*
+Acho que nao tas a usar isto e dava erro tambem
+
 'use-strict';
 
 const client = require('mongoose');
@@ -28,3 +31,4 @@ class mongoConnection {
 module.exports = {
     mongoManager: mongoManager
 };
+*/

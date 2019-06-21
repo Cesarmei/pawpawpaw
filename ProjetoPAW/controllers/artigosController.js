@@ -1,5 +1,5 @@
 var moongoose = require("moongoose");
-var Artigo = require("../Mongoose/schemas/artigos.js");
+var Artigo = require("../Mongoose/schemas/artigos");
 
 
 
@@ -10,7 +10,7 @@ var Artigo = require("../Mongoose/schemas/artigos.js");
 var artigoController = {};
 
 //Criar artigo
-artigoController.createArtigo = function (req,res,next){
+exports.createArtigo = function (req,res,next){
 	var artigo = new Artigo(req.body);
 
 	artigo.save(function (err){
@@ -23,7 +23,7 @@ artigoController.createArtigo = function (req,res,next){
 };
 
 //atualizar artigo
-artigoController.updateController = function(req,res,next){
+exports.updateArtigo = function(req,res,next){
 	Artigo.findByIdAndUpdate(req.body.id_art,req.body,{new: true}, function(err,artigo){
 		if(err){
 			next(err);
@@ -35,7 +35,7 @@ artigoController.updateController = function(req,res,next){
 
 
 //Apagar artigo
-artigoController.deleteArtigo = function (req,res,next){
+exports.deleteArtigo = function (req,res,next){
 	req.artigo.remove(function (err){
 		if(err){
 			next(err);
@@ -46,7 +46,7 @@ artigoController.deleteArtigo = function (req,res,next){
 };
 
 //Buscar todos os artigos
-artigoController.getArtigos = function(req,res,next){
+exports.getArtigos = function(req,res,next){
 	Artigo.find(function(err,artigos){
 		if(err){
 			next(err);
@@ -57,12 +57,12 @@ artigoController.getArtigos = function(req,res,next){
 };
 
 //buscar um artigo
-artigoController.getArtigo = function(req,res){
+exports.getArtigo = function(req,res){
 	res.json(req.artigo);
 };
 
 
-artigoController.getArtigoById = function(req,res){
+exports.getArtigoById = function(req,res){
 	res.json(req.artigo);
 	Artigo.findById(req.body.id_art,req.body,{new: true}, function(err,artigo){
 		if(err){
@@ -75,4 +75,4 @@ artigoController.getArtigoById = function(req,res){
 
 
 //export do modulo
-module.export = artigoController;
+//module.exports = artigoController;

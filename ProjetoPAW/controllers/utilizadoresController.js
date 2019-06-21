@@ -1,5 +1,5 @@
 var moongoose = require("moongoose");
-var Utilizador = require("../Mongoose/schemas/utilizador.js");
+var Utilizador = require("../Mongoose/schemas/utilizador");
 
 
 
@@ -23,7 +23,7 @@ utilizadorController.createUtlz = function (req,res,next){
 };
 
 //atualizar utilizador
-utilizadorController.updateController = function(req,res,next){
+utilizadorController.updateUtilizador = function(req,res,next){
 	Utilizador.findByIdAndUpdate(req.body.id_user,req.body,{new: true}, function(err,utilizador){
 		if(err){
 			next(err);
@@ -35,7 +35,7 @@ utilizadorController.updateController = function(req,res,next){
 
 
 //Apagar utilizador
-utilizadorController.deleteUtlz = function (req,res,next){
+utilizadorController.deleteUtilizador = function (req,res,next){
 	req.user.remove(function (err){
 		if(err){
 			next(err);
@@ -75,4 +75,4 @@ utilizadorController.getUtilizadorById = function(req,res){
 
 
 //export do modulo
-module.export = utilizadorController;
+module.exports = utilizadorController;

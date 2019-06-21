@@ -1,6 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var utilizadoresController = require("../controllers/utilizadoresController.js");
+var utilizadoresController = require("../controllers/utilizadoresController");
+
+
+//login page
+router.get('/login', (req,res) => res.render('login'));
+
+//register page
+router.get('/register', (req,res) => res.render('register'));
+
+//*********** */API REST*****************************++++
 
 /*GET lista de utilizadores */
 router.get('/utilizadores',utilizadoresController.getUtilizadores);
@@ -14,3 +23,5 @@ router.put('/utilizador/:id_user',utilizadoresController.updateUtilizador);
 router.delete('/utilizador/:id_user',utilizadoresController.deleteUtilizador);
 //PARAM
 router.param('id_user',utilizadoresController.getUtilizadorById);
+
+module.exports = router;

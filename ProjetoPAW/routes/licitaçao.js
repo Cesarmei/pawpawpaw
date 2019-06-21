@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var licitaçaoController = require("../controllers/licitaçãoController.js");
+var licitaçaoController = require("../controllers/licita\u00E7aoController");
 
 /*GET lista de licitações */
 router.get('/licitaçao',licitaçaoController.getLicitaçao);
@@ -15,3 +15,4 @@ router.delete('/utilizador/:id_lct',licitaçaoController.deleteLicitaçao);
 //PARAM
 router.param('id_lct',licitaçaoController.getLicitaçaoById);
 
+module.exports = router;
