@@ -9,6 +9,30 @@ router.get('/login', (req,res) => res.render('login'));
 //register page
 router.get('/register', (req,res) => res.render('register'));
 
+//register handle
+router.post('/register',(req,res) => {
+    const{nome, genero, password, password2 } = req.body;
+    let errors=[];
+
+//check required fields
+if(!nome || !genero || !password || !password2){
+        errors.push({ msg: 'please fill in all fields'});
+    }
+
+//check passwords match
+if(passowrd !== passoword2){
+    errors.push({msg: 'Passwords não são iguais!'});
+}
+
+//check pass length (6 min)
+if(password.length<6){
+    errors.push({msg: 'Password tem que ter no minimo 6 caracteres.'});
+}
+
+
+});
+
+
 //*********** */API REST*****************************++++
 
 /*GET lista de utilizadores */
