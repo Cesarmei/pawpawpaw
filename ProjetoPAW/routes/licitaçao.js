@@ -9,9 +9,9 @@ router.post('/licitaçao',licitaçaoController.createLicitaçao);
 //GET
 router.get('/licitaçao/:id_lct',licitaçaoController.getLicitaçao);
 //PUT
-router.put('/utilizador/:id_lct',licitaçaoController.updateLicitaçao);
+router.put('/licitação/:id_lct',licitaçaoController.updateLicitaçao);
 //DELETE
-router.delete('/utilizador/:id_lct',licitaçaoController.deleteLicitaçao);
+router.delete('/licitação/:id_lct',licitaçaoController.deleteLicitaçao);
 //PARAM
 router.param('id_lct',licitaçaoController.getLicitaçaoById);
 
