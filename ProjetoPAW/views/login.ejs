@@ -2,6 +2,17 @@
     <div class="col-md-6 m-auto">
       <div class="card card-body">
         <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
+        <% include ./partials/messages %> 
+          <div class="form-group">
+            <label for="nome">Nome</label>
+            <input
+              type="nome"
+              id="nome"
+              name="nome"
+              class="form-control"
+              placeholder="Introduza o seu nome"
+            />
+          </div>
           <div class="form-group">
             <label for="password">Password</label>
             <input
@@ -15,7 +26,7 @@
           <button type="submit" class="btn btn-primary btn-block">Login</button>
         </form>
         <p class="lead mt-4">
-          Sem conta? <a href="/users/register">Registo</a>
+          Sem conta? <a href="/utilizadores/register">Registo</a>
         </p>
       </div>
     </div>

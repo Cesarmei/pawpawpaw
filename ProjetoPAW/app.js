@@ -50,10 +50,17 @@ app.use(express.static('views'));
 app.set('view engine', 'ejs');
 //app.set('views', './views');
 
+
+//BODYPARCER
+app.use(bodyParser.urlencoded({extended: false}))
+app.use(bodyParser.json())
+
+
+
 //ROUTES
 
 app.use('/',require('./routes/index'));
-app.use('/users', utilizadoresRouter);
+app.use('/utilizadores', utilizadoresRouter);
 /*
 app.use('/users', utilizadoresRouter);
 app.use('/artigos', artigosRouter);
@@ -61,10 +68,6 @@ app.use('/leilao', leilaoRouter);
 app.use('/licitaçao', licitaçaoRouter);
 app.use('/',indexRouter);
 */
-
-//BODYPARCER
-app.use(bodyParser.urlencoded({ extended: false }));
-
 
 
 
@@ -77,47 +80,9 @@ app.use(express.urlencoded({ extended: false }));
 //app.use('/bootstrap',express.static(_dirname+'/node_modules/bootstrap/dist/css/'));  -> dirname nao ta definido
 
 
-//catch 404 and forward to error handler
-
-/*
-app.use(function (req, res, next) {
-    next(createError(404));
-});
-*/
-//error handler
-
-/*
-app.use(function (err, req, res, next) {
-    //set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    //render the error page
-    res.status(err.status || 500);
-    res.render('error');
-});
-*/
-
 module.exports = app;
 
 
 
 app.listen(console.log('Server started on port 3000'));
 
-
-//**************************************SERVER*********************************
-//criar servidor
-
-
-//web server (http faz extend de EventEmitter)
-/*const server = http.createServer(function(req,res){
-    if(req.url==='/'){
-        res.write('All systems: green!');
-        res.end();
-    }
-});
-server.listen(3000);
-
-console.log('listening on port 3000...')
-//sempre que ha uma conexao ao server ele cria um evento
-*/

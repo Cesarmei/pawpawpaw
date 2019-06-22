@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/Cesarmei/pawpawpaw#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "bootstrap": "^4.3.1",
     "cookie-parser": "^1.4.4",

@@ -61,6 +61,9 @@ utilizadorController.getUmUtilizador = function(req,res){
 	res.json(req.utilizador);
 };
 
+utilizadorController.findOne = function(req,res){
+	res.json(req.utilizador);
+};
 
 utilizadorController.getUtilizadorById = function(req,res){
 	res.json(req.utilizador);
