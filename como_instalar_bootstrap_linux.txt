@@ -1,15 +1,3 @@
--cd /var/www/html/
-
--git clone https://github.com/twbs/bootstrap.git
-
--npm install -g bower
-
--bower install boostrap --allow-root
-
-
-//and there you go
-
-//fuck this shit
 
 -sudo apt-get install curl python-software-properties
 -curl -sL https://deb.nodesource.com/setup_12.x | sudo bash -
@@ -19,7 +7,7 @@
 //node e npm instalados there
 
 -sudo apt install mongodb
--cd /home/usernam
+-cd ..
 -sudo mkdir -p data/lib
 -sudo chmod -R 775 data
 -sudo touch /etc/systemd/system/mongodb.service
@@ -43,3 +31,12 @@ WantedBy=multi-user.target"
 
 //caso erro de start up
 -sudo service mongodb stop
+
+//nodemon
+-sudo npm i -g nodemon
+
+
+
+-npm run paw
+
+
