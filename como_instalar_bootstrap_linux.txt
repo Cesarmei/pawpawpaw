@@ -43,3 +43,8 @@ WantedBy=multi-user.target"
 
 //caso erro de start up
 -sudo service mongodb stop
+
+//nodemon
+-sudo npm i -g nodemon
+
+
