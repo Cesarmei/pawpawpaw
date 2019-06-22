@@ -1,9 +1,0 @@
-- fazer mkdir data
-
-- criar pasta "db" dentro da pasta data
-
-- fazer mongoimport dos documentos/base de dados da pasta "mongoExports"
-
--ATENÇAO: a base de dados que têm de criar tem de chamar: paw_tp
-
--mongoimport --db paw_tp --collection users --file xxxxxxx.json
