@@ -1,5 +1,33 @@
 Sobre o trabalho de recurso: (adicionem coisas)
 
+Base de dados:
+
+Telemóveis: [
+	• marca: string required
+	• modelo: string required
+	• descrição: string required
+	• user: string required;
+	• preçoInicial: number required;
+	• data_leilao: data required; --> quando termina
+	• imagem: string ou imagem mesmo --> opcional
+	• estado: string required --> (enviado, recebido, avaliado, recusado, terminado)
+
+	?• numLicitações: number ?
+	?• preço: number ?
+]
 
 
+Licitações: [
+	• user: string required
+	• licitação: number required
+]
 
+Users: [
+	• user: string required
+	• licitação: number required
+	• tlmvPendentes: number
+	• tlmvsVendidos: number
+	• valorA
+	• numLances: number
+	• leiloesGanhos: number
+]

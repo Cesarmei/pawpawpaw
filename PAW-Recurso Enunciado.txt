@@ -1,0 +1,122 @@
+PAW - Recurso
+
+Empresa RevendeTele
+Venda por leilões de telemóveis usados
+
+- - -
+Empresa fica com 5% do valor da venda!
+Outros 95% ficam para os utilizadores que vendem o produto.
+- - -
+
+A plataforma a desenvolver tem de ter seguintes módulos:
+		Utilizadores
+			Parte destinada aos clientes onde podem licitar e vender produtos.
+		Funcionários
+			Parte destinada aos funcionários onde podem confirmar a receção do telemóvel, avaliar e oferecer um preço inicial para o leilão.
+
+******************************************************************
+Importante!
+
+
+	--> Um utilizador com login pode licitar apenas no caso de o valor ser superior ao valor de licitação.
+
+	--> Caso a data para o fim do leilão já tenha expirado deve aparecer menção do vencedor do leilão e impedir o produto de receber mais licitações.
+
+	--> Sempre que foi submetida uma venda, o funcionário tem de validar se o telemóvel pode ser vendido ou não!
+
+	--> Na página de internet os todos os utilizadores podem ver a lista de telemóveis para venda (todos os leilões), mas podem apenas licitar no artigo com login válido na página.
+
+	--> Um telemóvel pode receber licitações até ao fim do leilão.
+
+	--> Na página de detalhes do artigo deve aparecer uma lista de licitações ordenada pelo valor da licitação.
+
+	--> Caso a data para o fim do leilão tenha já expirado deve aparecer menção do vencedor do leilão e impedir o produto de receber mais licitações.
+
+	--> Os utilizadores com login devem poder submeter artigos para leilão e ver a lista de artigos que já submeteram para leilão.
+
+	--> Um utilizador pode também cancelar um leilão que ainda não tenha terminado. 
+
+	--> Para efeitos de negócio considere que os artigos são entregues na instituição antes do final do leilão. 
+
+	--> No fim do leilão, o utilizador vencedor deverá deslocar-se à instituição para efetuar o respetivo pagamento da licitação e levantamento do produto.
+
+	--> Os trabalhos entregues deverão evitar (se possível) utilizar caminhos absolutos ou endereços específicos, de modo a que possam ser facilmente utilizados em qualquer máquina.
+
+******************************************************************
+
+- - - - - 
+Dados:
+	- Telemóveis devem ter:
+		• O nome da marca e modelo (obrigatório);
+		• Uma descrição (obrigatório);
+		• Utilizador que submete a venda (obrigatório);
+		• Preço proposto pelo administrador (obrigatório);
+		• Data para fim do leilão (obrigatório);
+		• Uma imagem (opcional).
+
+	- As licitações devem ser do estilo:
+		• Nome do utilizador (obrigatório);
+		• Licitação (obrigatório).
+- - - - -
+
+- - - - -
+Páginas:
+	Utilizador sem login (guest)
+		Apenas pode ver os leilões existentes mas não pode licitar nem vender.
+	Utilizador vendedor
+		Apenas será necessário aparecer as licitações de maior valor nos leilões onde estão inseridos e o número de licitações do mesmo até à data.
+		Um utilizador com login pode licitar apenas no caso de o valor ser superior ao valor de licitação.
+	Funcionário
+		Lista de licitações completas (leilões concluídos) até à data.
+- - - - -
+
+- - - - -
+No funcionamento da plataforma deve considerar uma página dashboard para o administrador da Plataforma onde, para além de todas as outras funcionalidades, possa verificar um conjunto de dados como:
+	• Número de leilões terminados;
+	• Número de leilões ativos;
+	• Montante adquirido através da sua percentagem dos leilões (5%);
+	• Montante total gasto na plataforma eletrónica.
+	• Outras estatísticas relevantes (ex: utilizador com mais produtos).
+
+Os utilizadores/vendedores, devem visualizar um dashboard contendo:
+	• A possibilidade de submeter um pedido de revenda (título, descrição, imagem, valor proposto);
+	• O estado do pedido de revenda (enviado, recebido, avaliado, recusado, terminado);
+	• Telemóveis em processo de venda;
+	• Telemóveis vendidos e valor angariado (95% do valor do leilão);
+	• Número de lances em leilões;
+	• Número de leilões ganhos.
+- - - - -
+
+- - - - -
+Requisitos Gerais
+Gestão de artigos em leilão
+	Criar/listar/eliminar pedidos de venda de telemóveis em leilão;
+	Listar todas os leilões ativos;
+	Listar lances no artigo em leilão;
+	Criar um lance num artigo em leilão;
+
+Gestão de clientes
+	Criar/Remover/Editar Utilizadores na plataforma
+	Apresentar dashboard para os diferentes utilizadores;
+	Listar artigos em que o utilizador licitou e artigos submetidos a leilão;
+
+Funcionalidades Extra para bonificação do trabalho
+	Uso de gráficos nos dashboards do utilizador e do administrador (considerar a título de exemplo a biblioteca highcharts https://www.npmjs.com/package/angular-highcharts);
+	Adicione um passo final no leilão dando a possibilidade de pagamento via paypal ao vencedor do leilão. (considerar o uso do sdk paypal https://developer.paypal.com/docs/api/quickstart/#how-to-use-this-guide e https://www.nodejsera.com/paypal-payment-integration-using-nodejs-part1.html).
+- - - - -
+
+- - - - -
+Requisitos Específicos
+Sistema de autenticação e autorização de utilizadores e que consiga identificar administradores, utilizadores com login e sem login;
+
+Desenvolvimento de uma API REST com endpoints com pelo menos a capacidade de:
+	Listar telemóveis em leilão;
+	Obter o lance mais alto de um leilão num determinado momento;
+	Efetuar um lance num telemóvel em leilão.
+
+Utilizar design e princípios de design responsivo, e adaptado para dispositivos com diferentes tamanhos como por exemplo tablets ou desktops;
+
+É autorizado o uso de ferramentas e frameworks (ex: Bootstrap) introduzidos nas aulas para o
+desenvolvimento do trabalho prático.
+- - - - -
+
