@@ -1,39 +1,23 @@
 const http = require('http');
 var createError = require('http-errors');
 const express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-//const ejs = require('ejs');
 const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 const bodyParser = require("body-parser");
-//const expressLayouts = require('express-ejs-layouts');
-
-//imports from local modules
-const userSchema = require('./models/user');
-const telemoveisSchema = require('./models/telemovel');
-const leilaoSchema = require('./models/leilao');
-const licitacaoSchema = require('./models/licitacao');
-
-
-//definir routes
-const telemoveisRouter = require('./routes/telemoveis');
-const leilaoRouter = require('./routes/leilao');
-const licitacaoRouter = require('./routes/licitacao');
-const usersRouter = require('./routes/users');
-const indexRouter = require('./routes/index');
+const expressLayouts = require('express-ejs-layouts');
+const flash = require('connect-flash');
+const session = require('express-session');
+const passport = require('passport');
 
 
 //Initialize express
 const app = express();
 
-
-//DB config
-const {
-    mongoBD
-} = require('./mongoConnect');
+//passport
+require('./config/passport')(passport);
 
 
+//mongoDB
 mongoose.connect('mongodb://localhost:27017/paw_tp', { useNewUrlParser: true })
     .then(() => {
         console.log('Connected to database!');
@@ -42,43 +26,56 @@ mongoose.connect('mongodb://localhost:27017/paw_tp', { useNewUrlParser: true })
         console.log('Connection failed!');
     });
 
+var db = mongoose.connection;
+db.on('error',console.error.bind(console,'MongoDB connection failed:'));
+
+//Front-end
+app.use(expressLayouts);
+app.set('view engine','ejs');
 
 
-//Setup view engine
-
-
-//BODYPARCER
+//BODYPARSER
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json())
 
+//Express Session
+app.use(session({
+    secret: 'secret',
+    resave: true,
+    saveUninitialized: true,
+}));
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Connect flash
+app.use(flash());
+
+//Gloval vars for erros
+app.use((req,res,next) => {
+    res.locals.sucessAlert = req.flash('sucessAlert');
+    res.locals.errorAlert = req.flash('errorAlert');
+    res.locals.error = req.flash('error');
+    next();
+});
 
 
 //ROUTES
-
 app.use('/',require('./routes/index'));
-app.use('/users', usersRouter);
+app.use('/users', require('./routes/users'));
+
 /*
-app.use('/users', usersRouter);
-app.use('/telemoveis', telemoveisRouter);
-app.use('/leilao', leilaoRouter);
-app.use('/licitacao', licitacaoRouter);
-app.use('/',indexRouter);
-*/
-
-
-
-//app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-//app.use(cookieParser());
-//app.use(express.static(path.join(_dirname,'public')));   // dirname nao ta definido
+*/
 
-//app.use('/bootstrap',express.static(_dirname+'/node_modules/bootstrap/dist/css/'));  -> dirname nao ta definido
-
-
+//export
 module.exports = app;
 
+//SERVER
+var server = app.listen(3000, function(){
+    console.log('Server started on port 3000');
+});
 
-
-app.listen(console.log('Server started on port 3000'));
 

@@ -1,5 +1,5 @@
 var moongoose = require("moongoose");
-var Licitacao = require("../models/licitacoes");
+var Licitacao = require("../models/licitacao");
 
 
 

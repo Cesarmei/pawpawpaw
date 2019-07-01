@@ -10,7 +10,7 @@ var Telemovel = require("../models/telemovel");
 var telemovelController = {};
 
 //Criar telemovel
-exports.createTelemovel = function (req,res,next){
+telemovelController.createTelemovel = function (req,res,next){
 	var tlmv = new Telemovel(req.body);
 
 	tlmv.save(function (err){
@@ -23,7 +23,7 @@ exports.createTelemovel = function (req,res,next){
 };
 
 //atualizar telemovel
-exports.updateTelemovel = function(req,res,next){
+telemovelController.updateTelemovel = function(req,res,next){
 	Telemovel.findByIdAndUpdate(req.body._id,req.body,{new: true}, function(err,tlmv){
 		if(err){
 			next(err);
@@ -35,7 +35,7 @@ exports.updateTelemovel = function(req,res,next){
 
 
 //remover telemovel
-exports.removeTelemovel = function (req,res,next){
+telemovelController.removeTelemovel = function (req,res,next){
 	req.tlmv.remove(function (err){
 		if(err){
 			next(err);
@@ -46,7 +46,7 @@ exports.removeTelemovel = function (req,res,next){
 };
 
 //Buscar todos os telemoveis
-exports.getTelemoveis = function(req,res,next){
+telemovelController.getTelemoveis = function(req,res,next){
 	Telemovel.find(function(err,tlmv){
 		if(err){
 			next(err);
@@ -57,12 +57,12 @@ exports.getTelemoveis = function(req,res,next){
 };
 
 //buscar um telemovel
-exports.getTelemovel = function(req,res){
+telemovelController.getTelemovel = function(req,res){
 	res.json(req.telemovel);
 };
 
 
-exports.getTelemovelById = function(req,res){
+telemovelController.getTelemovelById = function(req,res){
 	res.json(req.tlmv);
 	Telemovel.findById(req.body._id,req.body,{new: true}, function(err,tlmv){
 		if(err){

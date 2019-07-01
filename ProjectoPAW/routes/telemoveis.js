@@ -3,7 +3,7 @@ const router = express.Router();
 const telemoveisController = require("../controllers/telemovelController");
 
 /*GET lista de telemoveis */
-router.get('/telemoveis',telemoveisController.getTelemovel);
+router.get('/telemoveis',telemoveisController.getTelemoveis);
 //POST
 router.post('/telemoveis',telemoveisController.createTelemovel);
 //GET

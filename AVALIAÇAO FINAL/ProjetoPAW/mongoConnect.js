@@ -23,5 +23,5 @@ class mongoConnection {
 }
 
 module.exports = {
-    mongoManager: mongoManager
+    mongoConnection: mongoConnect
 };

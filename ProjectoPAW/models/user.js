@@ -5,21 +5,23 @@ let Schema = mongoose.Schema;
 
 
 //schema user
-const user = new Schema({
+const userSchema = new Schema({
+    username: {type: String, required:true},
     nome: {type: String, required:true},
     password: {type:String, required:true},
-    tipo: {type: String, default:"user"},
+    tipo: {type: String, default:"utilizador"},
     
 });
 
-user.methods.findById=function(targetId){
+/*
+userSchema.methods.findById=function(targetId){
     return this.model('user').findOne({_id: targetId});
 }
 
-user.methods.findOne=function(targetNome){
+userSchema.methods.findOne=function(targetNome){
     return this.model('user').findOne({nome: targetNome});
 }
+*/
 
-const User = mongoose.model('User', user);
-
+const User = mongoose.model('User', userSchema);
 module.exports = User;
