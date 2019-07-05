@@ -26,6 +26,9 @@ router.get('/all',usersController.getUsers);
 router.get('/:id',usersController.getOneUser);
 router.param('id',usersController.getUserById);
 
+//PARAM & GET - por id
+router.get('/:username',usersController.getOneUsername);
+router.param('username',usersController.getUserByUsername);
 
 
 //PUT

@@ -40,6 +40,11 @@
               value="<%= typeof dataFim != 'undefined' ? dataFim : '' %>" />
           </div>
           <div class="form-group">
+            <label for="dataFim">Imagem do telemóvel</label>
+            <input type="imagem" id="imagem" name="imagem" class="form-control" placeholder="Introduza o link da imagem."
+              value="<%= typeof imagem != 'undefined' ? imagem : '' %>" />
+          </div>
+          <div class="form-group">
             <label for="estado">Estado:</label>
             <input readonly type="estado" id="estado" name="estado" class="form-control" value="enviado"
               value="<%= typeof estado != 'undefined' ? estado : '' %>" />
@@ -48,6 +53,7 @@
             Registar
           </button>
         </form>
+        <p class="lead mt-2"><a href="/dashboardUser">Voltar</a></p>
     </div>
   </div>
 </div>

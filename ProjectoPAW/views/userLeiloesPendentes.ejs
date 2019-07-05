@@ -1,17 +1,10 @@
-<h1 class="mt-4">Dashboard - Utilizador</h1>
-<p class="lead mb-3">Bem-vindo <%= username %></p>
-<a href="/leiloes/register" class=" btn btn-primary">Criar leilao</a>
-<a href="/leiloes/<%= username %>/userLeiloesPendentes " class=" btn btn-primary">Ver leiloes pendentes</a>
-<a href="/leiloes/userLeiloes" class=" btn btn-primary">Ver os meus leiloes</a>
-<a href="/leiloes/licitacoesFeitas" class=" btn btn-primary">Licitaçoes</a>
-<a href="/users/logout" class="btn btn-secondary">Logout</a>
-<h3 class="lead mb-3">Leiloes ativos</h3>
+<h1 class="mt-4">Leiloes pendentes</h1><br>
+<!-- LEILOES -->
 <div class="content">
     <!-- content here -->
     <div class="product-grid product-grid--flexbox">
         <div class="product-grid__wrapper">
             <!-- Product list start here -->
-
             <%for (var leilao in leiloes){%>
             <!-- Single product -->
             <div class=" product-grid__product-wrapper">

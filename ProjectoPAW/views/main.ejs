@@ -1,12 +1,37 @@
-<div class="row mt-5 ">
-  <div class="col-md-6 m-auto">
-    <div class="card card-body text-center">
-      <h1><i class="fab fa-node-js fa-3x"></i></h1>
-      <p>Efetue login ou faça o seu registo!</p>
-      <a href="/users/register" class="btn btn-primary btn-block mb-2"
-        >Registo</a
-      >
-      <a href="/users/login" class="btn btn-secondary btn-block">Login</a>
-    </div>
+<h1 class="mt-4">RevendeTele</h1>
+<p class="lead mb-3">Seja bem-vindo %></p>
+<div class="card-body ">
+  <span class="text-left">Efetue login ou faça o seu registo!</span>
+  <a href="/users/register" class=" ml-5 text-right btn btn-primary">Registo</a>
+  <a href="/users/login" class=" ml-5 text-right btn btn-secondary ">Login</a>
+</div>
+<p class="lead mb-3">Todos os leilões</p>
+<!-- LEILOES -->
+<div class="content">
+  <!-- content here -->
+  <div class="product-grid product-grid--flexbox">
+      <div class="product-grid__wrapper">
+          <!-- Product list start here -->
+
+          <%for (var leilao in leiloes){%>
+          <!-- Single product -->
+          <div class=" product-grid__product-wrapper">
+              <div class="product-grid__product">
+                  <div class="product-grid__img-wrapper">
+                      <img style="width:20%" src="<%= leilao.imagem %><%= leiloes[leilao].imagem %>" alt="loading"
+                          class="product-grid__img" />
+                  </div>
+                  <span class="product-grid__title"><%=leilao.marca%><%=leiloes[leilao].marca%> <%=leilao.modelo%><%=leiloes[leilao].modelo%></span>
+                  <span class="product-grid__price"><%=leilao.preçoInicial%><%=leiloes[leilao].preçoInicial%>€</span>
+                  <div class="product-grid__extend-wrapper">
+                      <div class="product-grid__extend">
+                          <p class="product-grid__description"><%=leilao.descricao%><%=leiloes[leilao].descricao%></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- end Single product -->
+          <%}%>
+      </div>
   </div>
 </div>

@@ -26,7 +26,19 @@ var requiresAdmin = function () {
 
 
 //main page
-router.get('/', forwardAuthenticated, (req, res) => res.render('main'));
+router.get('/', forwardAuthenticated, (req, res) =>{
+  //mostrar telemoveis em leilao
+  tlmvs.find({ estado: 'avaliado' }, function (err, tlmv) {
+    if (err) {
+      next(err);
+    } else {
+      //console.log(tlmv);
+      res.render('main', {
+        leiloes: tlmv
+      });
+    }
+  });
+});//res.render('main'));
 
 // Dashboard User
 router.get('/dashboardUser', authenticationTrue, (req, res) => {
@@ -37,12 +49,11 @@ router.get('/dashboardUser', authenticationTrue, (req, res) => {
     } else {
       //console.log(tlmv);
       res.render('dashboardUser', {
-        username: req.user.username,
+        username:req.user.username,
         leiloes: tlmv
       })
     }
   });
-
 });
 
 

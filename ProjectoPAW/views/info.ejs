@@ -1,0 +1,27 @@
+<h1 class="mt-4">Telemovel ( <%= phone._id %> )</h1><br>
+<div class="content">
+    <!-- content here -->
+    <div class="product-grid product-grid--flexbox">
+        <!-- Single product -->
+        <div class=" product-grid__product-wrapper">
+            <div class="product-grid__product">
+                <div class="product-grid__img-wrapper">
+                    <img style="width:40%" src="<%= phone.imagem %>" alt="loading"
+                        class="product-grid__img" />
+                </div>
+                <span class="product-grid__title"><%= phone.marca %></span>
+                <span class="product-grid__title"><%= phone.modelo %></span>
+                <span class="product-grid__price"><%= phone.preçoInicial %>€</span>
+                <div class="product-grid__extend-wrapper">
+                    <div class="product-grid__extend">
+                        <p class="product-grid__description"><%= phone.descricao %></p>
+                    </div>
+                </div>
+                <div class="product-grid__title">Vendido por: <%= phone.user %></div>
+                <div class="product-grid__title">Fim do leilao: <%= phone.dataFim %></div>
+                <div class="product-grid__title">Estado: <%= phone.estado %></div>
+            </div>
+        </div>
+        <!-- end Single product -->
+    </div>
+</div>

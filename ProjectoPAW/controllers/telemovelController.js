@@ -20,7 +20,8 @@ var telemovelController = {};
 
 //Criar telemovel
 telemovelController.registerTelemovel = function (req,res,next){
-	const{marca, modelo,descricao,preçoInicial,imagem,dataFim,estado} = req.body;
+	const{marca, modelo,descricao,preçoInicial,dataFim,estado} = req.body;
+	var imagem;
 	let errors=[];
 
 	//get user loged in
@@ -33,7 +34,12 @@ telemovelController.registerTelemovel = function (req,res,next){
 	if(!marca|| !modelo || !descricao || !preçoInicial || !user || !dataFim || !estado){
 		errors.push({msg:'Não está a introduzir dados!'});
 		//req.flash('error','Não está a introduzir dados!.');
-	}	
+	}
+	
+	//se nao tiver imagem, guarda uma imagem a dizer "sem imagem"
+	if(!imagem){
+		imagem='http://bit.do/semimagemdotlmv';
+	}
 
 	//se tiver erros
 	if(errors.length > 0){

@@ -37,7 +37,7 @@ db.on('error',console.error.bind(console,'MongoDB connection failed:'));
 app.use(expressLayouts);
 app.set('view engine','ejs');
 app.use(express.static('public'));
-
+app.use(express.static(__dirname + '/public/'));
 
 //BODYPARSER
 app.use(bodyParser.urlencoded({extended: false}))
@@ -67,7 +67,7 @@ app.use((req,res,next) => {
     //user do momento
     res.locals.currentUser=req.user;
     //telemoveis
-    res.locals.leiloes=req.telemovel;
+    //res.locals.leiloes=req.telemovel;
     next();
 });
 
