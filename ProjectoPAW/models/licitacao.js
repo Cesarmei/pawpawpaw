@@ -5,10 +5,9 @@ var ObjectId = mongoose.Schema.Types.ObjectId;
 
 //schema de uma licitacao
 let licitacao = new Schema({
-    _id: {type: Number, min: 1, max: 500, required:true},
+    valor: {type:Number, required:true},
     user: {type: String, required:true},
-    licitacao: {type:Number, required:true},
-    id_telemovel: {type:ObjectId, required:true}
+    leilao: {type:ObjectId, required:true}
 });
 
 //cria mais um dado para adicionar timestamp

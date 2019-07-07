@@ -1,3 +1,4 @@
+
 <h1 class="mt-4">Leiloes pendentes</h1><br>
 <!-- LEILOES -->
 <div class="content">
@@ -5,6 +6,7 @@
     <div class="product-grid product-grid--flexbox">
         <div class="product-grid__wrapper">
             <!-- Product list start here -->
+
             <%for (var leilao in leiloes){%>
             <!-- Single product -->
             <div class=" product-grid__product-wrapper">
@@ -15,10 +17,13 @@
                     </div>
                     <span class="product-grid__title"><%=leilao.marca%><%=leiloes[leilao].marca%> <%=leilao.modelo%><%=leiloes[leilao].modelo%></span>
                     <span class="product-grid__price"><%=leilao.preçoInicial%><%=leiloes[leilao].preçoInicial%>€</span>
+                    <p class="product-grid__description">Vendedor: <%=leilao.user%><%=leiloes[leilao].user%></p>
+                    <p class="product-grid__description">Estado: <%=leilao.estado%><%=leiloes[leilao].estado%></p>
                     <div class="product-grid__extend-wrapper">
                         <div class="product-grid__extend">
-                            <p class="product-grid__description"><%=leilao.descricao%><%=leiloes[leilao].descricao%></p>
-                            <a href="/leiloes/<%=leilao._id %><%= leiloes[leilao]._id %>/info" class="btn btn-primary product-grid__btn product-grid__view"><i class="fa fa-eye">Ver mais informação</i></a>
+                            <p class="product-grid__description">Descrição: <%=leilao.descricao%><%=leiloes[leilao].descricao%></p>
+                            <p class="product-grid__description">Termina: <%=leilao.dataFim%><%=leiloes[leilao].dataFim%></p>
+                            
                         </div>
                     </div>
                 </div>

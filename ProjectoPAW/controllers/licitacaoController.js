@@ -1,6 +1,6 @@
 var moongoose = require("moongoose");
 var Licitacao = require("../models/licitacao");
-
+const tlmvs = require('../models/telemovel');
 
 
 
@@ -10,65 +10,81 @@ var Licitacao = require("../models/licitacao");
 var licitacaoController = {};
 
 //Criar licitacao
-licitacaoController.createLicitacao = function (req,res,next){
-	var licitacao = new Licitacao(req.body);
+licitacaoController.createLicitacao = function (req, res, next) {
+	const { valor, user, leilao } = req.body;
+	let errors = [];
 
-	licitacao.save(function (err){
-		if(err){
+	//verificar se os campos não estão vazios
+	if (!valor || !user || !leilao) {
+		errors.push({ msg: 'Não está a introduzir dados!' });
+	}
+
+	//se tiver erros
+	if (errors.length > 0) {
+		res.render('criarLicitacao', {
+			valor,
+			user,
+			leilao
+		});
+		//senao cria nova licitacao
+	} else {
+		const newLicitacao = new Licitacao({
+			valor: valor,
+			user: user,
+			leilao: leilao
+		});
+		//guardar a licitacao realizada
+		newLicitacao.save()
+			.then(lct => {
+				req.flash('sucessAlert', 'Telemovel enviado para avaliaçao.');
+				res.redirect('/:id/info');
+				//res.status(200);
+			})
+			.catch(err => console.log(err));
+	}
+};
+
+
+//Buscar todas as licitacao
+licitacaoController.getLicitacoes = function (req, res, next) {
+	Licitacao.find(function (err, licitacoes) {
+		if (err) {
 			next(err);
-		}else{
-			res.json(licitacao);
+		} else {
+			res.json(licitacoes);
 		}
 	});
 };
 
-//atualizar licitacao
-licitacaoController.updateLicitacao = function(req,res,next){
-	Licitacao.findByIdAndUpdate(req.body._id,req.body,{new: true}, function(err,licitacao){
-		if(err){
+//Buscar todas as licitacões de um leilao (id)
+licitacaoController.getLicitacoesById = function (req, res, next) {
+	var leilao = req.body;
+	console.log(leilao);
+	Licitacao.find({ leilao: leilao._id }, function (err, licitacoes) {
+		if (err) {
 			next(err);
-		}else{
-			res.json(licitacao);
+		} else {
+			res.render('todasLicitacoes', {
+				licitacoes: licitacoes,
+				leilao:leilao
+			})
 		}
-	});
-};
-
-
-//Apagar licitacao
-licitacaoController.deleteLicitacao = function (req,res,next){
-	req.licitacao.remove(function (err){
-		if(err){
-			next(err);
-		}else{
-			res.json(req.licitacao);
-		}
-	});
-};
-
-//Buscar todos os licitacao
-licitacaoController.getLicitacao = function(req,res,next){
-	Licitacao.find(function(err,licitacoes){
-		if(err){
-			next(err);
-		}else{
-			res.json(licitacao);
-		}
-	});
+	})
 };
 
 //buscar um licitacao
-licitacaoController.getLicitacao = function(req,res){
+licitacaoController.getLicitacao = function (req, res) {
 	res.json(req.licitacao);
 };
 
-//buscar leilao por ID
-licitacaoController.getLicitacaoById = function(req,res){
-	res.json(req.licitacao);
-	Leilao.findById(req.body._id,req.body,{new: true}, function(err,licitacao){
-		if(err){
+//buscar licitacao por ID
+licitacaoController.getLicitacaoById = function (req, res) {
+	Licitacao.findOne({ _id: id }, (err, licitacao) => {
+		if (err) {
 			next(err);
-		}else{
-			res.json(licitacao);
+		} else {
+			res.licitacao = licitacao;
+			next();
 		}
 	});
 };

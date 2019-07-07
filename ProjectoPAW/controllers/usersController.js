@@ -84,6 +84,7 @@ UserController.loginUser = function(req,res,next){
 		//req.flash('error','Não está a introduzir dados!.');
 	}	
 
+
 	//se tiver erros
 	if(errors.length > 0){
 		res.render('login',{

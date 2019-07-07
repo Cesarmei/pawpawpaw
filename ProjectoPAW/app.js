@@ -66,8 +66,8 @@ app.use((req,res,next) => {
     res.locals.error = req.flash('error');
     //user do momento
     res.locals.currentUser=req.user;
-    //telemoveis
-    //res.locals.leiloes=req.telemovel;
+    //query
+    res.locals.query = req.query;
     next();
 });
 
@@ -76,6 +76,7 @@ app.use((req,res,next) => {
 app.use('/',require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/leiloes',require('./routes/telemoveis'));
+app.use('/licitar/',require('./routes/licitacao'));
 
 /*
 app.use(express.json());

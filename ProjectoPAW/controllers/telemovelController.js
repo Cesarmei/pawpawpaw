@@ -27,7 +27,6 @@ telemovelController.registerTelemovel = function (req,res,next){
 	//get user loged in
 
 	//console.log(req.user);
-    const user = req.user;
 
 
 	//verificar se os campos não estão vazios
@@ -61,7 +60,7 @@ telemovelController.registerTelemovel = function (req,res,next){
 				modelo:modelo,
 				descricao:descricao,
 				preçoInicial:preçoInicial,
-				user:user._id,
+				user:user.username,
 				dataFim:dataFim,
 				imagem:imagem,
 				estado:estado
@@ -133,6 +132,8 @@ telemovelController.getTelemovelById = function(req,res,next,id){
 		}
 	});
 };
+
+
 
 
 //export do modulo

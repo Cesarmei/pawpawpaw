@@ -11,61 +11,39 @@ router.get('/register', authenticationTrue, (req, res) => res.render('criarTelem
 
 
 //GET - Buscar leiloes pendentes
-router.get('/:username/userLeiloesPendentes', (req, res) => {
-    User.find({ username: req.body.username }, function (err, user) {
+router.get('/:username/userLeiloesPendentes',authenticationTrue, (req, res) => {
+        var userCheck = req.user.username;
         //mostrar telemoveis por avaliar
-        tlmvs.find({ estado: 'enviado' }, function (err, tlmv) {
+        tlmvs.find({ estado:{$in: ['enviado','avaliado']},user:{$gte:userCheck} }, function (err, tlmv) {
             if (err) {
                 next(err);
             } else {
-                //console.log(tlmv);
                 //res.json(tlmv);
                 res.render('userLeiloesPendentes', {
                     leiloes: tlmv
                 });
             }
         });
-    });
 });
 
 
 //GET - Buscar leiloes do user
-router.get('/userLeiloes', (req, res) => {
-    User.find({ username: req.body.username }, function (err, user) {
-        //mostrar telemoveis por avaliar
-        tlmvs.find({ id: req.body._id }, function (err, tlmv) {
+router.get('/:username/userLeiloes',authenticationTrue, (req, res) => {
+        var userCheck = req.user.username;
+        tlmvs.find({ id: req.body._id,user:{$gte:userCheck}}, function (err, tlmv) {
             if (err) {
                 next(err);
             } else {
-                //console.log(tlmv);
                 //res.json(tlmv);
                 res.render('userLeiloes', {
                     leiloes: tlmv
                 });
             }
         });
-    });
 });
 
 
 
-//GET - pagina do telemovel
-router.get('/:_id/info', (req, res) => {
-    //User.find({ user: req.body.user }, function (err, user) {
-        tlmvs.find({ id: req.body._id }, function (err, tlmv) {
-            if (err) {
-                next(err);
-            } else {
-                console.log(tlmv);
-                //res.json(tlmv);
-                res.render('info', {
-                    phone: tlmv
-                    //user:user
-                });
-            }
-        });
-    //});
-});
 
 //GET lista de telemoveis
 router.get('/telemoveis', telemoveisController.getTelemoveis);
@@ -77,8 +55,10 @@ router.put('/cancelLeilao/:_id', telemoveisController.cancelLeilao);
 
 //PUT
 //router.put('/telemoveis/:_id',telemoveisController.updateTelemovel);
-//DELETE
+
+//TERMINAR LEILAO
 router.delete('/telemoveis/:_id', telemoveisController.cancelLeilao);
+
 
 //GET & PARAM - buscar telemovel/leilao por id
 router.get('/:_id', telemoveisController.getTelemovel);
