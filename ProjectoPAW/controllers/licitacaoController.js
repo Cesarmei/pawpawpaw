@@ -13,15 +13,27 @@ var licitacaoController = {};
 licitacaoController.createLicitacao = function (req, res, next) {
 	const { valor, user, leilao } = req.body;
 	let errors = [];
+	console.log(req.body);
+	console.log(res.body);
 
 	//verificar se os campos não estão vazios
 	if (!valor || !user || !leilao) {
 		errors.push({ msg: 'Não está a introduzir dados!' });
 	}
 
+	tlmvs.find({id:leilao._id}), function (err,tlmv){
+		if(tlmv.preçoInicial >= valor){
+			res.render('createLicitacao', {
+				valor,
+				user,
+				leilao
+			});
+		}
+	}
+
 	//se tiver erros
 	if (errors.length > 0) {
-		res.render('criarLicitacao', {
+		res.render('createLicitacao', {
 			valor,
 			user,
 			leilao
@@ -37,7 +49,7 @@ licitacaoController.createLicitacao = function (req, res, next) {
 		newLicitacao.save()
 			.then(lct => {
 				req.flash('sucessAlert', 'Telemovel enviado para avaliaçao.');
-				res.redirect('/:id/info');
+				res.redirect('/dashboardUser');
 				//res.status(200);
 			})
 			.catch(err => console.log(err));

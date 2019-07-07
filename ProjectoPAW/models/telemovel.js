@@ -14,7 +14,7 @@ let telemoveis = new Schema({
     modelo: {type: String, required:true},
     descricao: {type: String, required:true},
     preçoInicial: {type: Number, min: 0,require:true},
-    user:{type: String, required:true},
+    user:{type: String},
     dataFim:{ type: Date, default: (new Date()), required:true},
     imagem: {type: String},
     estado: {type: String, required:true}

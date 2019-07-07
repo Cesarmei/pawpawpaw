@@ -25,9 +25,8 @@ telemovelController.registerTelemovel = function (req,res,next){
 	let errors=[];
 
 	//get user loged in
-
+	const user = req.user.username;
 	//console.log(req.user);
-
 
 	//verificar se os campos não estão vazios
 	if(!marca|| !modelo || !descricao || !preçoInicial || !user || !dataFim || !estado){
@@ -40,8 +39,10 @@ telemovelController.registerTelemovel = function (req,res,next){
 		imagem='http://bit.do/semimagemdotlmv';
 	}
 
+	console.log('meteu imagem');
 	//se tiver erros
 	if(errors.length > 0){
+		console.log('tem erros');
 		res.render('criarTelemovel',{
 			errors,
 			marca,
@@ -55,12 +56,14 @@ telemovelController.registerTelemovel = function (req,res,next){
 		});
 		//senao cria novo telemovel
 		}else{
+			//NAO ESTA ADICIONAR USER
+			console.log(user);
 			const newTelemovel = new Telemovel({
 				marca:marca,
 				modelo:modelo,
 				descricao:descricao,
 				preçoInicial:preçoInicial,
-				user:user.username,
+				user:user,
 				dataFim:dataFim,
 				imagem:imagem,
 				estado:estado
@@ -69,9 +72,7 @@ telemovelController.registerTelemovel = function (req,res,next){
 			newTelemovel.save()
 			.then(tlmv => {
 				req.flash('sucessAlert','Telemovel enviado para avaliaçao.');
-				if(user.tipo=="utilizador") res.redirect('/dashboardUser');
-				if(user.tipo=="funcionario") res.redirect('/dashboardFunc');
-				if(user.tipo=="admin") res.redirect('/dashboardAdmin');
+				res.redirect('/dashboardUser');
 				//res.status(200);
 			})
 			.catch(err => console.log(err));				

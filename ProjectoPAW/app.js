@@ -76,7 +76,7 @@ app.use((req,res,next) => {
 app.use('/',require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/leiloes',require('./routes/telemoveis'));
-app.use('/licitar/',require('./routes/licitacao'));
+app.use('/licitar',require('./routes/licitacao'));
 
 /*
 app.use(express.json());
