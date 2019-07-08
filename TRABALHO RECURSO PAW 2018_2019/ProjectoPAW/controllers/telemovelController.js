@@ -24,13 +24,16 @@ telemovelController.registerTelemovel = function (req, res, next) {
 	const { marca, modelo, descricao, preçoInicial, dataFim, estado } = req.body;
 	var imagem = req.body.imagem;
 	let errors = [];
-
+	var ultimaLct=0;
 	//get user loged in
 	const user = req.user.username;
 	//console.log(req.user);
 
 	//instanciar array de licitacoes
-	//var licitacoes = {[ ]}
+	var licitacoes= [{
+		licitacao:0,
+		user:''
+	}]
 
 	//verificar se os campos não estão vazios
 	if (!marca || !modelo || !descricao || !preçoInicial || !user || !dataFim || !estado) {
@@ -65,7 +68,9 @@ telemovelController.registerTelemovel = function (req, res, next) {
 			dataFim: dataFim,
 			imagem: imagem,
 			estado: estado,
-			//licitacoes: licitacoes
+			licitacoes: licitacoes,
+			ultimaLct:ultimaLct
+			
 		});
 		//guardar o telemovel
 		newTelemovel.save()
