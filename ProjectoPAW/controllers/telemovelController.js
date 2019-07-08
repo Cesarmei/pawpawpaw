@@ -22,7 +22,7 @@ var telemovelController = {};
 //Criar telemovel
 telemovelController.registerTelemovel = function (req, res, next) {
 	const { marca, modelo, descricao, preçoInicial, dataFim, estado } = req.body;
-	var imagem;
+	var imagem = req.body.imagem;
 	let errors = [];
 
 	//get user loged in
