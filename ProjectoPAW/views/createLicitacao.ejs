@@ -3,13 +3,13 @@
       <div class="card card-body">
         <h1 class="text-center mb-3">Nova licitação</h1>
         <% include ./partials/messages %>
-        <form action="/licitar/:id/createLicitacao" method="POST">
+        <form action="/leiloes/:id/createLicitacao" method="POST">
           <div class="form-group">
             <label for="valor">Valor</label>
             <input type="valor" id="valor" name="valor" class="form-control" placeholder="Valor que deseja licitar"
               value="<%= typeof valor != 'undefined' ? valor : '' %>" />
           </div>
-          <form action="/licitar/:id/createLicitacao" method="POST">
+          <form action="/leiloes/:id/createLicitacao" method="POST">
             <div class="form-group">
               <label for="user">User</label>
               <input readonly type="user" id="user" name="user" class="form-control" placeholder="Será associado o user logado ao leilao."

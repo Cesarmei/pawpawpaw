@@ -6,6 +6,9 @@ var User = require("../models/user");
 const tlmvs = require('../models/telemovel');
 
 
+
+//*********************************LEILOES******************************/
+
 //GET - Criação de telemoveis
 router.get('/register', authenticationTrue, (req, res) => res.render('criarTelemovel'));
 
@@ -43,7 +46,34 @@ router.get('/:username/userLeiloes',authenticationTrue, (req, res) => {
 });
 
 
+//GET - Buscar leiloes pendentes dos users
+router.get('/validarLeiloesPendentes',authenticationTrue, (req, res) => {
+    //mostrar telemoveis por avaliar
+    tlmvs.find({ estado:'enviado' }, function (err, tlmv) {
+        if (err) {
+            next(err);
+        } else {
+            //res.json(tlmv);
+            res.render('validarLeiloesPendentes', {
+                leiloes: tlmv
+            });
+        }
+    });
+});
 
+//GET - Buscar leiloes para terminar
+router.get('/terminarLeiloes',authenticationTrue, (req, res) => {
+    tlmvs.find({ estado:'avaliado' }, function (err, tlmv) {
+        if (err) {
+            next(err);
+        } else {
+            //res.json(tlmv);
+            res.render('terminarLeiloes', {
+                leiloes: tlmv
+            });
+        }
+    });
+});
 
 //GET lista de telemoveis
 router.get('/telemoveis', telemoveisController.getTelemoveis);
@@ -78,5 +108,42 @@ router.param('_id', telemoveisController.getTelemovelById);
 
 
 //*************API REST*************
+
+
+
+//*********************************Licitaçoes******************************/
+
+
+/*GET lista de licitacões */
+router.get('/licitacao',telemoveisController.getLicitacao);
+
+
+//GET & POST - Pagina de registo de uma nova licitação
+router.get('/:id/createLicitacao',authenticationTrue,(req, res) => res.render('createLicitacao'));
+router.post('/:id/createLicitacao',telemoveisController.createLicitacao);
+
+//GET & POST - Dar o preço inicial (funcionario)
+router.get('/:id/giveprice',authenticationTrue,(req, res) => {
+    var id_tlmv= req.params.id;
+    res.render('giveprice',{id_tlmv:id_tlmv});
+});
+router.post('/givePrice',telemoveisController.givePrice);
+
+//GET & POST - Terminar Leilao (funcionario)
+router.get('/:id/terminar',authenticationTrue,(req, res) => {
+    var id_tlmv= req.params.id;
+    res.render('terminar',{id_tlmv:id_tlmv});
+});
+router.post('/terminar',telemoveisController.terminarLeilao);
+
+//GET
+router.post('/:id/licitacoes',telemoveisController.getLicitacoesById);
+//GET
+router.get('/licitacao/:_id',telemoveisController.getLicitacao);
+//PARAM
+router.param('_id',telemoveisController.getLicitacaoById);
+//router.param('_id',telemoveisController.getTelemovelById);
+
+
 
 module.exports = router;

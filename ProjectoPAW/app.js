@@ -66,17 +66,15 @@ app.use((req,res,next) => {
     res.locals.error = req.flash('error');
     //user do momento
     res.locals.currentUser=req.user;
-    //query
-    res.locals.query = req.query;
+    //tlmv
+    res.locals.myTlmv = req.telemovel;
     next();
 });
-
 
 //ROUTES
 app.use('/',require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/leiloes',require('./routes/telemoveis'));
-app.use('/licitar',require('./routes/licitacao'));
 
 /*
 app.use(express.json());
