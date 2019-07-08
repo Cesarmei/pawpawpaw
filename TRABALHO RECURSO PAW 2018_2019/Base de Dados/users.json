@@ -1,0 +1,7 @@
+{"_id":{"$oid":"5d194c742240ea1a987b8a4a"},"tipo":"utilizador","username":"xT","nome":"Manuel","password":"$2a$12$TdvYcfBD7Ha16DKwd1/zmO1d/lNC6N7wBqBC3BlLYqWL7iC2ZUj/2","__v":0}
+{"_id":{"$oid":"5d194c8a2240ea1a987b8a4b"},"tipo":"funcionario","username":"LongMan","nome":"Joao","password":"$2a$12$fScu8GxbrTdQ6ZyyhX./nuY3MfHROTDkz9SmFbg2zZ.kBxktgd8vS","__v":0}
+{"_id":{"$oid":"5d194ced2240ea1a987b8a4c"},"tipo":"admin","username":"admin","nome":"admin","password":"$2a$12$YhKwN7NIMyXArxd/D/59fuGE0lICWB5d5JHU8tT/mZUlmHRLCRPyO","__v":0}
+{"_id":{"$oid":"5d194fe8efd100216c913e56"},"tipo":"utilizador","username":"TripleX","nome":"António","password":"$2a$12$ZWehxsONtrMO2RpeUj5pfuJ/XhJ/fNEg8l/Lrc8cCv7etm03dk1V.","__v":0}
+{"_id":{"$oid":"5d195cd4771cf4219ca126c5"},"tipo":"utilizador","username":"44X","nome":"Kai","password":"$2a$12$3mnFQTrEmPy1V6C1xQXp5.GTrcCKyC9MS83Cls77LTGQJvbEHUW2.","__v":0}
+{"_id":{"$oid":"5d1b32fc3758a82008c3cc40"},"tipo":"utilizador","nome":"Diogo","username":"afafa","password":"$2a$08$6HoKjTdF0A6nCC5niks6MeFwdPfqtf6sdwGnu3.WOeyp3tRMfn8sW","__v":0}
+{"_id":{"$oid":"5d1b3875f57f580d8098d796"},"tipo":"utilizador","nome":"Mauro","username":"fafaf","password":"$2a$08$8.9.QvkqV.pyA7urVTrI3.VEZOw728zquLSRj6Rjpef3/xu2XwyNa","__v":0}
