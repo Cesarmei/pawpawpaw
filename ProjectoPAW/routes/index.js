@@ -5,28 +5,10 @@ const { authenticationTrue, forwardAuthenticated } = require('../config/auth');
 const tlmvs = require('../models/telemovel');
 var leiloes;
 
-
-//***************Funções */
-
-var requiresAdmin = function () {
-  return [
-    ensureLoggedIn('/users/login'),
-    function (req, res, next) {
-      if (req.user && req.user.tipo === "admin")
-        next();
-      else
-        res.send(401, 'Unauthorized');
-    }
-  ]
-};
-
 //*************ROUTES */
 
-
-
-
 //main page
-router.get('/', forwardAuthenticated, (req, res) =>{
+router.get('/', forwardAuthenticated, (req, res) => {
   //mostrar telemoveis em leilao
   tlmvs.find({ estado: 'avaliado' }, function (err, tlmv) {
     if (err) {
@@ -38,40 +20,59 @@ router.get('/', forwardAuthenticated, (req, res) =>{
       });
     }
   });
-});//res.render('main'));
+});
 
 // Dashboard User
 router.get('/dashboardUser', authenticationTrue, (req, res) => {
   //mostrar telemoveis em leilao
-  tlmvs.find({ estado: 'avaliado' }, function (err, tlmv) {
-    if (err) {
-      next(err);
-    } else {
-      //console.log(tlmv);
-      res.render('dashboardUser', {
-        username:req.user.username,
-        leiloes: tlmv
-      })
-    }
-  });
+  if (req.user.tipo === 'utilizador') {
+    var userCheck = req.user.username;
+    tlmvs.find({ estado: 'avaliado', user: { $ne: userCheck } }, function (err, tlmv) {
+      if (err) {
+        next(err);
+      } else {
+        res.render('dashboardUser', {
+          username: req.user.username,
+          leiloes: tlmv
+        })
+      }
+    })
+  } else {
+    res.redirect('/users/login');
+  }
 });
 
 
+// Dashboard Admin
+router.get('/dashboardFunc', authenticationTrue, (req, res) => {
+  //mostrar telemoveis terminados
+  if (req.user.tipo === 'funcionario') {
+    var userCheck = req.user.username;
+    tlmvs.find({ estado: 'terminado', user: { $ne: userCheck } }, function (err, tlmv) {
+      if (err) {
+        next(err);
+      } else {
+        res.render('dashboardFunc', {
+          username: req.user.username,
+          leiloes: tlmv
+        })
+      }
+    })
+  } else {
+    res.redirect('/users/login');
+  }
+});
 
 // Dashboard Admin
-//router.all('/dashboardAdmin/*',requiresAdmin);
-router.get('/dashboardAdmin', authenticationTrue,(req, res) =>
-  res.render('dashboardAdmin', {
-    username: req.user.username
-  })
-);
-
-// Dashboard Funcionario
-router.get('/dashboardFunc', authenticationTrue, (req, res) =>
-  res.render('dashboardFunc', {
-    username: req.user.username
-  })
-);
+router.get('/dashboardAdmin', authenticationTrue, (req, res) => {
+  if (req.user.tipo === 'admin') {
+    res.render('dashboardAdmin', {
+      username: req.user.username
+    })
+  } else {
+    res.redirect('/users/login');
+  }
+});
 
 
 

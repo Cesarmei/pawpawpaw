@@ -1,5 +1,8 @@
 html{overflow-y: scroll; }
 
+.bold{
+  font-weight: bold;
+}
 
 .wrapper {
   width: 68em; }

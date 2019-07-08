@@ -1,0 +1,20 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">Tem a certeza que quer terminar?</h1>
+        <% include ./partials/messages %>
+        <form action="/leiloes/terminar" method="POST">
+            <div class="form-group">
+                <label for="leilao">Leilao que está  a terminar</label>
+                <input readonly type="leilao" id="leilao" name="leilao" class="form-control" placeholder="Será associada o preço ao leilao."
+                value='<%= id_tlmv %>' value="<%= typeof leilao != 'undefined' ? leilao : '' %>" />
+              </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Terminar
+            </button>
+          </form>
+          <p class="lead mt-2"><a href="/terminarLeiloes">Voltar</a></p>
+      </div>
+    </div>
+  </div>
+  

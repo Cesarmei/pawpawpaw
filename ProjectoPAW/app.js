@@ -66,11 +66,10 @@ app.use((req,res,next) => {
     res.locals.error = req.flash('error');
     //user do momento
     res.locals.currentUser=req.user;
-    //telemoveis
-    //res.locals.leiloes=req.telemovel;
+    //tlmv
+    res.locals.myTlmv = req.telemovel;
     next();
 });
-
 
 //ROUTES
 app.use('/',require('./routes/index'));

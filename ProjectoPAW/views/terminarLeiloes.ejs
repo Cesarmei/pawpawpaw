@@ -1,4 +1,4 @@
-<h1 class="mt-4">Leiloes pendentes</h1><br>
+<h1 class="mt-4">Leiloes ativos</h1><br>
 <!-- LEILOES -->
 <div class="content">
     <!-- content here -->
@@ -22,7 +22,7 @@
                         <div class="product-grid__extend">
                             <p class="product-grid__description">Descrição: <%=leilao.descricao%><%=leiloes[leilao].descricao%></p>
                             <p class="product-grid__description">Termina: <%=leilao.dataFim%><%=leiloes[leilao].dataFim%></p>
-                            
+                            <a href="/leiloes/<%=leilao._id%><%=leiloes[leilao]._id%>/terminar" class="btn btn-primary product-grid__btn product-grid__view"> Terminar</a>
                         </div>
                     </div>
                 </div>

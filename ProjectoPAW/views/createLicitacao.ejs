@@ -1,0 +1,31 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">Nova licitação</h1>
+        <% include ./partials/messages %>
+        <form action="/leiloes/:id/createLicitacao" method="POST">
+          <div class="form-group">
+            <label for="valor">Valor</label>
+            <input type="valor" id="valor" name="valor" class="form-control" placeholder="Valor que deseja licitar"
+              value="<%= typeof valor != 'undefined' ? valor : '' %>" />
+          </div>
+          <form action="/leiloes/:id/createLicitacao" method="POST">
+            <div class="form-group">
+              <label for="user">User</label>
+              <input readonly type="user" id="user" name="user" class="form-control" placeholder="Será associado o user logado ao leilao."
+              value='' value="<%= typeof user != 'undefined' ? user : '' %>" />
+            </div>
+            <div class="form-group">
+                <label for="leilao">Leilao a qual está licitar</label>
+                <input readonly type="leilao" id="leilao" name="leilao" class="form-control" placeholder="Será associada a licitição ao leilao."
+                value='' value="<%= typeof leilao != 'undefined' ? leilao : '' %>" />
+              </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Licitar
+            </button>
+          </form>
+          <p class="lead mt-2"><a href="/dashboardUser">Voltar</a></p>
+      </div>
+    </div>
+  </div>
+  
