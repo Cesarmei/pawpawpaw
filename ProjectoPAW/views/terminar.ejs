@@ -7,7 +7,7 @@
         <% include ./partials/messages %>
         <form action="/leiloes/terminar" method="POST">
             <div class="form-group">
-                <label for="leilao">Leilao que está  a terminar</label>
+                <label for="leilao">Leilao que está a terminar</label>
                 <input readonly type="leilao" id="leilao" name="leilao" class="form-control" placeholder="Será associada o preço ao leilao."
                 value='<%= id_tlmv %>' value="<%= typeof leilao != 'undefined' ? leilao : '' %>" />
               </div>

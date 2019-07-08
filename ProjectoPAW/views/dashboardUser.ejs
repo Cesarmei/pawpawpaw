@@ -7,8 +7,6 @@
 <a href="/leiloes/register" class=" btn btn-primary">Criar leilao</a>
 <a href="/leiloes/<%= username %>/userLeiloesPendentes " class=" btn btn-primary">Ver leiloes pendentes</a>
 <a href="/leiloes/<%= username %>/userLeiloes" class=" btn btn-primary">Ver os meus leiloes</a>
-<a href="/leiloes/licitacoesFeitas" class=" btn btn-primary">Licitaçoes</a>
-<a href="/leiloes/licitacoesFeitas" class=" btn btn-primary">Leiloes que licitei</a>
 <a href="/users/logout" class="btn btn-secondary">Logout</a>
 <p><h3 class="lead mb-3 bold">Leiloes ativos</h3></p>
 <div class="content">
@@ -26,15 +24,19 @@
                             class="product-grid__img" />
                     </div>
                     <span class="product-grid__title"><%=leilao.marca%><%=leiloes[leilao].marca%> <%=leilao.modelo%><%=leiloes[leilao].modelo%></span>
+                    <span class="product-grid__description">Preço Inicial:</span>
                     <span class="product-grid__price"><%=leilao.preçoInicial%><%=leiloes[leilao].preçoInicial%>€</span>
+                    <br>
+                    <span class="product-grid__description">Ultima Licitação:</span>
+                    <span class="product-grid__price"><%=leilao.ultimaLct%><%=leiloes[leilao].ultimaLct%>€</span>
                     <span class="product-grid__title">Vendedor: <%=leilao.user%><%=leiloes[leilao].user%></span>
                     <div class="product-grid__extend-wrapper">
                         <div class="product-grid__extend">
                             <p class="product-grid__description">Descrição: <%=leilao.descricao%><%=leiloes[leilao].descricao%></p>
                             <p class="product-grid__description">Termina: <%=leilao.dataFim%><%=leiloes[leilao].dataFim%></p>
                             <!--<p class="product-grid__description">Estado: <%=leilao.estado%><%=leiloes[leilao].estado%></p>-->
-                            <a href="/licitar/<%=leilao._id %><%= leiloes[leilao]._id %>/todasLicitacoes" class="btn btn-primary product-grid__btn product-grid__view"><i class="fa fa-eye"> Todas as licitaçoes</i></a>
-                            <a href="/licitar/<%=leilao._id %><%= leiloes[leilao]._id %>/createLicitacao" class="product-grid__btn product-grid__add-to-cart""><i class="fa fa-cart-arrow-down">  Licitar</i></a> 
+                            <a href="/leiloes/<%=leilao._id %><%= leiloes[leilao]._id %>/todasLicitacoes" class="btn btn-primary product-grid__btn product-grid__view"><i class="fa fa-eye"> Todas as licitaçoes</i></a>
+                            <a href="/leiloes/<%= username %>/licitar/<%=leilao._id %><%= leiloes[leilao]._id %>" class="product-grid__btn product-grid__add-to-cart"><i class="fa fa-cart-arrow-down"> Licitar</i></a> 
                         </div>
                     </div>
                 </div>

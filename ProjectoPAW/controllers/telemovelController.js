@@ -30,10 +30,7 @@ telemovelController.registerTelemovel = function (req, res, next) {
 	//console.log(req.user);
 
 	//instanciar array de licitacoes
-	var licitacoes = {
-		licitacao: 0,
-		user: ' '
-	}
+	//var licitacoes = {[ ]}
 
 	//verificar se os campos não estão vazios
 	if (!marca || !modelo || !descricao || !preçoInicial || !user || !dataFim || !estado) {
@@ -48,7 +45,6 @@ telemovelController.registerTelemovel = function (req, res, next) {
 	//se tiver erros
 	if (errors.length > 0) {
 		res.render('criarTelemovel', {
-			errors,
 			marca,
 			modelo,
 			descricao,
@@ -56,7 +52,7 @@ telemovelController.registerTelemovel = function (req, res, next) {
 			user,
 			dataFim,
 			imagem,
-			estado,
+			estado
 		});
 		//senao cria novo telemovel
 	} else {
@@ -69,7 +65,7 @@ telemovelController.registerTelemovel = function (req, res, next) {
 			dataFim: dataFim,
 			imagem: imagem,
 			estado: estado,
-			licitacoes: licitacoes
+			//licitacoes: licitacoes
 		});
 		//guardar o telemovel
 		newTelemovel.save()
@@ -98,16 +94,7 @@ telemovelController.cancelLeilao = function (req, res, next) {
 	});
 };
 
-//Buscar todos os telemovel
-telemovelController.getTelemoveis = function (req, res, next) {
-	Telemovel.find(function (err, Telemovel) {
-		if (err) {
-			next(err);
-		} else {
-			res.json(Telemovel);
-		}
-	});
-};
+
 
 //Buscar todos os telemovel em leilao
 telemovelController.getLeiloes = function (req, res, next) {
@@ -139,50 +126,46 @@ telemovelController.getTelemovelById = function (req, res, next, id) {
 
 //*********************************LICITAÇOES******************************/
 //Criar telemovel
-telemovelController.createLicitacao = function (req, res, next) {
-	const { valor, user, leilao } = req.body;
-	let errors = [];
-	//console.log(req.body);
-	//console.log(res.body);
+telemovelController.licitarLeilao = function (req, res, next) {
+	const valor = req.body.valor;
+	const user = req.body.user;
+	var leilao = mongoose.Types.ObjectId(req.body.leilao);
 
-	//verificar se os campos não estão vazios
-	if (!valor || !user || !leilao) {
-		errors.push({ msg: 'Não está a introduzir dados!' });
-	}
 
-	Telemovel.find({ id: leilao._id }), function (err, tlmv) {
-		if (tlmv.preçoInicial >= valor) {
-			res.render('createLicitacao', {
-				valor,
-				user,
-				leilao
-			});
+	/*
+	//verificar valor da licitacao
+	if (leilao.preçoInicial >= valor) {
+		errors.push({ msg: 'Tem de licitar com um valor maior!' });
+		res.render('licitarLeilao');
+		req.flash('errorAlert', 'Licitacao baixa!');
+	}else{
+		if(leilao.ultimaLct >= valor){
+			errors.push({ msg: 'Tem de licitar com um valor maior!' });
+			res.render('licitarLeilao');
+			req.flash('errorAlert', 'Licitacao baixa!');
 		}
-	}
+	}*/
 
-	//se tiver erros
-	if (errors.length > 0) {
-		res.render('createLicitacao', {
-			valor,
-			user,
-			leilao
+	
+	var licitacoes= [{
+		licitacao:valor,
+		user:user
+	}]
+
+	var ultimaLct = valor;
+
+	
+	Telemovel.updateOne({ _id: leilao },
+		{ $push: { licitacoes: licitacoes }, ultimaLct:ultimaLct},
+		function (error, result) {
+			if (error) {
+				console.log(error);
+			} else {
+				req.flash('sucessAlert', 'Licitacao concluída');
+				res.redirect('/dashboardUser')
+			}
 		});
-		//senao cria nova telemovel
-	} else {
-		const newtelemovel = new telemovel({
-			valor: valor,
-			user: user,
-			leilao: leilao
-		});
-		//guardar a telemovel realizada
-		newtelemovel.save()
-			.then(lct => {
-				req.flash('sucessAlert', 'Telemovel enviado para avaliaçao.');
-				res.redirect('/dashboardUser');
-				//res.status(200);
-			})
-			.catch(err => console.log(err));
-	}
+
 };
 
 
@@ -190,24 +173,20 @@ telemovelController.createLicitacao = function (req, res, next) {
 
 //Aceitar leilao pendente (propor preço inicial)
 telemovelController.givePrice = function (req, res, next) {
-	const valor  = req.body.valor;
+	const valor = req.body.valor;
 	var leilao = mongoose.Types.ObjectId(req.body.leilao);
 	var preçoInicial = valor;
 	var estado = 'recebido';
-	/*var licitacoes={
-		licitacao:valor,
-		user:''
-	}*/
-	Telemovel.updateOne({ _id: leilao }, 
-	 { preçoInicial:preçoInicial, estado:estado },
-	function(error,result){
-		if(error){
-			console.log(error);
-		}else{
-			req.flash('sucessAlert','Aguarda resposta do vendedor');
-			res.redirect('/dashboardFunc')
-		}
-	});
+	Telemovel.updateOne({ _id: leilao },
+		{ preçoInicial: preçoInicial, estado: estado },
+		function (error, result) {
+			if (error) {
+				console.log(error);
+			} else {
+				req.flash('sucessAlert', 'Aguarda resposta do vendedor');
+				res.redirect('/dashboardFunc')
+			}
+		});
 }
 
 
@@ -215,30 +194,67 @@ telemovelController.givePrice = function (req, res, next) {
 telemovelController.terminarLeilao = function (req, res, next) {
 	var leilao = mongoose.Types.ObjectId(req.body.leilao);
 	var estado = 'terminado';
-	Telemovel.updateOne({ _id: leilao }, 
-	 { estado:estado },
-	function(error,result){
-		if(error){
-			console.log(error);
-		}else{
-			req.flash('sucessAlert','Leilao terminado');
-			res.redirect('/dashboardFunc')
-		}
-	});
+	Telemovel.updateOne({ _id: leilao },
+		{ estado: estado },
+		function (error, result) {
+			if (error) {
+				console.log(error);
+			} else {
+				req.flash('sucessAlert', 'Leilao terminado');
+				res.redirect('/dashboardFunc')
+			}
+		});
 }
 
-/*
+
+//Rejeitar leiloes (Funcionario)
+telemovelController.rejeitarLeilaoFunc = function (req, res, next) {
+	var leilao = mongoose.Types.ObjectId(req.body.leilao);
+	var estado = 'recusado';
+	Telemovel.updateOne({ _id: leilao },
+		{ estado: estado },
+		function (error, result) {
+			if (error) {
+				console.log(error);
+			} else {
+				req.flash('sucessAlert', 'Leilao recusado');
+				res.redirect('/dashboardFunc')
+			}
+		});
+}
+
+//Rejeitar leiloes 
+telemovelController.rejeitarLeilao = function (req, res, next) {
+	var leilao = mongoose.Types.ObjectId(req.body.leilao);
+	var estado = 'recusado';
+	Telemovel.updateOne({ _id: leilao },
+		{ estado: estado },
+		function (error, result) {
+			if (error) {
+				console.log(error);
+			} else {
+				req.flash('sucessAlert', 'Leilao recusado');
+				res.redirect('/dashboardUser')
+			}
+		});
+}
+
+
 //Aceitar leilao pendente
-telemovelController.aceitarLeilao = function (req,res,next){
-	const {valor} = req.body;
-	var phone = req.myTlmv._id;
-	console.log(req.myTlmv);
-	Telemovel.find({id:phone},function(err,tlmv){
-		tlmv.preçoInicial = phone;
-		tlmv.save();
-		res.direct('/leiloes/userLeiloesPendentes')
-	});
-}*/
+telemovelController.aceitarLeilao = function (req, res, next) {
+	var leilao = mongoose.Types.ObjectId(req.body.leilao);
+	var estado = 'avaliado';
+	Telemovel.updateOne({ _id: leilao },
+		{ estado: estado },
+		function (error, result) {
+			if (error) {
+				console.log(error);
+			} else {
+				req.flash('sucessAlert', 'Leilao ativo!');
+				res.redirect('/dashboardUser')
+			}
+		});
+}
 
 //Buscar todas as telemovel
 telemovelController.getLicitacoes = function (req, res, next) {

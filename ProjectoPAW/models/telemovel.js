@@ -18,10 +18,11 @@ let telemoveis = new Schema({
     dataFim:{ type: Date, default: (new Date()), required:true},
     imagem: {type: String},
     estado: {type: String, required:true},
-    licitacoes:{
+    licitacoes:[{
         licitacao:{type: Number, min: 0,require:true},
         user:{type: String}
-    }
+    }],
+    ultimaLct:{type:Number,min:0, require:true}
 });
 
 telemoveis.methods.findById=function(targetId){

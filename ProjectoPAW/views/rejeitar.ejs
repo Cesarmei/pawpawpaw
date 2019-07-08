@@ -1,0 +1,20 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">Tem a certeza que quer rejeitar?</h1>
+        <% include ./partials/messages %>
+        <form action="/leiloes/rejeitar" method="POST">
+            <div class="form-group">
+                <label for="leilao">Leilao que está  a rejeitar</label>
+                <input readonly type="leilao" id="leilao" name="leilao" class="form-control" placeholder="Será associada o preço ao leilao."
+                value='<%= id_tlmv %>' value="<%= typeof leilao != 'undefined' ? leilao : '' %>" />
+              </div>
+            <button type="submit" class="btn btn-primary btn-block">
+              Rejeitar
+            </button>
+          </form>
+          <p class="lead mt-2"><a href="/UserLeiloesPendentes">Voltar</a></p>
+      </div>
+    </div>
+  </div>
+  

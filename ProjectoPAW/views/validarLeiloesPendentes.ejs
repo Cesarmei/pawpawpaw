@@ -24,7 +24,7 @@
                             <p class="product-grid__description">Descrição: <%=leilao.descricao%><%=leiloes[leilao].descricao%></p>
                             <p class="product-grid__description">Termina: <%=leilao.dataFim%><%=leiloes[leilao].dataFim%></p>
                             <a href="/leiloes/<%=leilao._id%><%=leiloes[leilao]._id%>/giveprice" class="btn btn-primary product-grid__btn product-grid__view"> Aceitar</a>
-                            <a href="/leiloes/reject" class="btn btn-secondary product-grid__btn product-grid__view"> Recusar</a>
+                            <a href="/leiloes/<%=leilao._id%><%=leiloes[leilao]._id%>/rejeitarFunc" class="btn btn-secondary product-grid__btn product-grid__view"> Recusar</a>
                         </div>
                     </div>
                 </div>

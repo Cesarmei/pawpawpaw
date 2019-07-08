@@ -1,0 +1,64 @@
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3">
+          <i class="fas fa-user-plus"></i> Registo
+        </h1>
+        <% include ./partials/messages %>
+        <form action="/users/register" method="POST">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="username"
+              id="username"
+              name="username"
+              class="form-control"
+              placeholder="Introduza o seu username"
+              value="<%= typeof username != 'undefined' ? username : '' %>"
+            />
+          </div>   
+        <form action="/users/register" method="POST">
+          <div class="form-group">
+            <label for="nome">Nome completo</label>
+            <input
+              type="nome"
+              id="nome"
+              name="nome"
+              class="form-control"
+              placeholder="Introduza o seu nome"
+              value="<%= typeof nome != 'undefined' ? nome : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Introduza a password"
+              value="<%= typeof password != 'undefined' ? password : '' %>"
+            />
+          </div>
+          <div class="form-group">
+            <label for="utilizador">Tipo:</label>
+            <input
+              readonly
+              type="tipo"
+              id="tipo"
+              name="tipo"
+              class="form-control"
+              placeholder="utilizador"
+              value="utilizador"
+              value="<%= typeof utilizador != 'undefined' ? utilizador : '' %>"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">
+            Registar
+          </button>
+        </form>
+        <p class="lead mt-4">Já tem conta? <a href="/users/login">Login</a></p>
+        <p class="lead mt-2"><a href="/">Voltar</a></p>
+      </div>
+    </div>
+  </div>

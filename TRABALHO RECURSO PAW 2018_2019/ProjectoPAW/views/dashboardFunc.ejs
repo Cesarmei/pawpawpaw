@@ -1,0 +1,41 @@
+<h1 class="mt-4">Dashboard - Funcionário</h1>
+<a href="/leiloes/validarLeiloesPendentes" class=" btn btn-primary">Validar leilões</a>
+<a href="/leiloes/terminarLeiloes" class=" btn btn-primary">Terminar leilões</a>
+<a href="/users/logout" class="btn btn-secondary">Logout</a>
+<p><h3 class="lead mb-3">Leiloes concluidos</h3></p>
+<div class="content">
+    <!-- content here -->
+    <div class="product-grid product-grid--flexbox">
+        <div class="product-grid__wrapper">
+            <!-- Product list start here -->
+
+            <%for (var leilao in leiloes){%>
+            <!-- Single product -->
+            <div class=" product-grid__product-wrapper">
+                <div class="product-grid__product">
+                    <div class="product-grid__img-wrapper">
+                        <img style="width:20%" src="<%= leilao.imagem %><%= leiloes[leilao].imagem %>" alt="loading"
+                            class="product-grid__img" />
+                    </div>
+                    <span class="product-grid__title"><%=leilao.marca%><%=leiloes[leilao].marca%> <%=leilao.modelo%><%=leiloes[leilao].modelo%></span>
+                    <span class="product-grid__description">Preço inicial:</span>
+                    <span class="product-grid__price"><%=leilao.preçoInicial%><%=leiloes[leilao].preçoInicial%>€</span>
+                    <br>
+                    <span class="product-grid__description">Ultima Licitação:</span>
+                    <span class="product-grid__price"><%=leilao.ultimaLct%><%=leiloes[leilao].ultimaLct%>€</span>
+                    <span class="product-grid__title">Vendedor: <%=leilao.user%><%=leiloes[leilao].user%></span>
+                    <div class="product-grid__extend-wrapper">
+                        <div class="product-grid__extend">
+                            <p class="product-grid__description">Descrição: <%=leilao.descricao%><%=leiloes[leilao].descricao%></p>
+                            <p class="product-grid__description">Termina: <%=leilao.dataFim%><%=leiloes[leilao].dataFim%></p>
+                            <p class="product-grid__description">Estado: <%=leilao.estado%><%=leiloes[leilao].estado%></p>
+                            <a href="/licitar/<%=leilao._id %><%= leiloes[leilao]._id %>/todasLicitacoes" class="btn btn-primary product-grid__btn product-grid__view"><i class="fa fa-eye"> Todas as licitaçoes</i></a>                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end Single product -->
+            <%}%>
+        </div>
+    </div>
+</div>

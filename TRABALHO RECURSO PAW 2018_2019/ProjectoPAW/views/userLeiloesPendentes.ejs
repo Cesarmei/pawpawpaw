@@ -1,0 +1,33 @@
+<h1 class="mt-4">Leiloes pendentes</h1><br>
+<!-- LEILOES -->
+<div class="content">
+    <!-- content here -->
+    <div class="product-grid product-grid--flexbox">
+        <div class="product-grid__wrapper">
+            <!-- Product list start here -->
+
+            <%for (var leilao in leiloes){%>
+            <!-- Single product -->
+            <div class=" product-grid__product-wrapper">
+                <div class="product-grid__product">
+                    <div class="product-grid__img-wrapper">
+                        <img style="width:20%" src="<%= leilao.imagem %><%= leiloes[leilao].imagem %>" alt="loading"
+                            class="product-grid__img" />
+                    </div>
+                    <span class="product-grid__title"><%=leilao.marca%><%=leiloes[leilao].marca%> <%=leilao.modelo%><%=leiloes[leilao].modelo%></span>
+                    <span class="product-grid__price"><%=leilao.preçoInicial%><%=leiloes[leilao].preçoInicial%>€</span>
+                    <p class="product-grid__description">Vendedor: <%=leilao.user%><%=leiloes[leilao].user%></p>
+                    <p class="product-grid__description">Estado: <%=leilao.estado%><%=leiloes[leilao].estado%></p>
+                    <div class="product-grid__extend-wrapper">
+                        <div class="product-grid__extend">
+                            <p class="product-grid__description">Descrição: <%=leilao.descricao%><%=leiloes[leilao].descricao%></p>
+                            <p class="product-grid__description">Termina: <%=leilao.dataFim%><%=leiloes[leilao].dataFim%></p>
+                           
+                    </div>
+                </div>
+            </div>
+            <!-- end Single product -->
+            <%}%>
+        </div>
+    </div>
+</div>
