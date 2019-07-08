@@ -8,7 +8,7 @@ function contId(){
     return cont+1;
 }*/
 
-//schema de uma licitaçao
+//schema de um telemovel
 let telemoveis = new Schema({
     marca: {type: String, required:true},
     modelo: {type: String, required:true},
