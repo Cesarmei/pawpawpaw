@@ -85,8 +85,12 @@ app.use(express.urlencoded({ extended: false }));
 module.exports = app;
 
 //SERVER
-var server = app.listen(3000, function(){
+/*
+var server = app.listen(0, function(){
     console.log('Server started on port 3000');
 });
+*/
 
-
+var server = app.listen(0, function() {
+  console.log('Listening on port ' + server.address().port);
+});
