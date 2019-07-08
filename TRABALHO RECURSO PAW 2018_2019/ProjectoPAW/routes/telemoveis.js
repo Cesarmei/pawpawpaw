@@ -89,6 +89,8 @@ router.param('_id', telemoveisController.getTelemovelById);
 //GET lista de telemoveis
 router.get('/telemoveis', telemoveisController.getLeiloes);
 
+//GET - Pagina de registo de uma nova licitação
+router.post('/licitarAPI',telemoveisController.getLicitarLeila);
 
 
 //*********************************Licitaçoes******************************/

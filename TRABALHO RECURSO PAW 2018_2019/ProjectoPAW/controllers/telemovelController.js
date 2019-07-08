@@ -305,6 +305,33 @@ telemovelController.getLicitacaoById = function (req, res) {
 	});
 };
 
+//licitar telemovel API REST
+telemovelController.getLicitarLeilao = function(req,res){
+	const valor = req.body.valor;
+	var user =req.body.user;
+	var leilao = mongoose.Types.ObjectId(req.body.leilao);
+
+	
+	var licitacoes= [{
+		licitacao:valor,
+		user:user
+	}]
+
+	var ultimaLct = valor;
+
+	
+	Telemovel.updateOne({ _id: leilao },
+		{ $push: { licitacoes: licitacoes }, ultimaLct:ultimaLct},
+		function (error, result) {
+			if (error) {
+				console.log(error);
+			} else {
+				res.json(result);
+			}
+		});
+
+}
+
 
 //export do modulo
 module.exports = telemovelController;
