@@ -19,11 +19,11 @@
   "homepage": "https://github.com/Cesarmei/pawpawpaw#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "body-parser": "^1.19.0",
+    "body-parser": "^1.20.1",
     "bootstrap": "^4.3.1",
     "cookie-parser": "^1.4.4",
     "ejs": "^2.6.2",
-    "express": "^4.17.1",
+    "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.0",
     "mongoose": "^5.6.0",
     "moongoose": "0.0.5",
